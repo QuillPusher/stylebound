@@ -1,0 +1,494 @@
+[
+  {
+    "id": "numerals-in-prose",
+    "name": "Spell out zero through nine in prose",
+    "severity": "warning",
+    "type": "numerals-in-prose",
+    "scope": [
+      "paragraph",
+      "quote",
+      "list"
+    ],
+    "source": {
+      "section": "Numbers > Numerals or words",
+      "quote": "Prose, 0 through 9: The word (five projects). Prose, 10 and up: Numeral. Measurements and durations: Numeral, even below 10."
+    },
+    "caseSensitive": false,
+    "message": "In prose, counts below 10 are words. Numerals stay for measurements, durations, times, versions, percentages, identifiers, and when a sentence mixes numbers of the same kind above and below 10.",
+    "fix": "Write the word: \"five projects\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The team has 5 projects."
+      ],
+      "pass": [
+        "The team has five projects.",
+        "The sync takes 3 seconds.",
+        "The release has 14 fixes, 3 new features, and 2 known issues.",
+        "See step 3.",
+        "Version 4 is current.",
+        "| Count |\n| --- |\n| 5 projects |"
+      ]
+    }
+  },
+  {
+    "id": "sentence-start-numeral",
+    "name": "Never start a sentence with a numeral",
+    "severity": "error",
+    "type": "sentence-start-numeral",
+    "scope": [
+      "paragraph",
+      "quote"
+    ],
+    "source": {
+      "section": "Numbers > Numerals or words",
+      "quote": "Start of a sentence: Never a numeral. Spell it out or rewrite. Eleven projects are active."
+    },
+    "caseSensitive": false,
+    "message": "A sentence that opens with a digit is easy to misread as a list number or a continuation.",
+    "fix": "Spell the number out, or rewrite so it isn't first.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "11 projects are active."
+      ],
+      "pass": [
+        "Eleven projects are active.",
+        "The team has 11 active projects. 2026 was a busy year."
+      ]
+    }
+  },
+  {
+    "id": "percent-in-prose",
+    "name": "Percent in prose, % in UI and tables",
+    "severity": "warning",
+    "type": "pattern",
+    "scope": [
+      "paragraph",
+      "quote",
+      "list"
+    ],
+    "source": {
+      "section": "Numbers > Numerals or words",
+      "quote": "Percent in prose: Numeral plus percent (50 percent). Percent in UI and tables: Numeral plus % (Resolved: 87%)."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\d+(?:[.,]\\d+)?\\s?%"
+    ],
+    "message": "In running text the guide spells out \"percent\". The symbol is for UI strings and tables.",
+    "fix": "Write \"50 percent\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "About 50% of tasks are overdue."
+      ],
+      "pass": [
+        "About 50 percent of tasks are overdue.",
+        "| Status | Share |\n| --- | --- |\n| Resolved | 87% |"
+      ]
+    }
+  },
+  {
+    "id": "percent-in-table",
+    "name": "Use % in tables",
+    "severity": "warning",
+    "type": "pattern",
+    "scope": [
+      "cell"
+    ],
+    "source": {
+      "section": "Numbers > Numerals or words",
+      "quote": "Percent in UI and tables: Numeral plus %."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\d\\s+percent\\b"
+    ],
+    "message": "Tables have tight space, so the guide uses the symbol there.",
+    "fix": "Write \"87%\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "| Status | Share |\n| --- | --- |\n| Resolved | 87 percent |"
+      ],
+      "pass": [
+        "| Status | Share |\n| --- | --- |\n| Resolved | 87% |"
+      ]
+    }
+  },
+  {
+    "id": "unit-spacing",
+    "name": "Space between a number and its unit",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Units",
+      "quote": "Put a space between a number and its unit: 25 MB, 5 GB, 30 ms. No space before a percent sign: 87%."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b\\d+(?:\\.\\d+)?(?:KB|MB|GB|TB|PB|kB|ms|GHz|MHz|Hz|px|dpi|fps|rpm|kbps|Mbps|Gbps)\\b",
+      "\\d\\s+%"
+    ],
+    "message": "The unit is a separate word, and the percent sign is not.",
+    "fix": "Write \"25 MB\" and \"30 ms\". In running text, write a percentage as \"87 percent\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The file is larger than 25MB.",
+        "Resolved: 87 %"
+      ],
+      "pass": [
+        "The file is larger than 25 MB.",
+        "The upload takes 30 ms."
+      ]
+    }
+  },
+  {
+    "id": "numeric-date",
+    "name": "Spell out the month in dates",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Dates and times",
+      "quote": "Spell out the month. 6/12/2026 means two different dates depending on the reader's country. Write June 12, 2026."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b\\d{1,2}/\\d{1,2}/(?:\\d{4}|\\d{2})\\b",
+      "\\b\\d{1,2}\\.\\d{1,2}\\.\\d{4}\\b"
+    ],
+    "message": "A numeric date reads differently in different countries. ISO dates belong in data formats, logs, and code.",
+    "fix": "Write \"June 12, 2026\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The change ships on 6/12/2026."
+      ],
+      "pass": [
+        "The change ships on June 12, 2026.",
+        "Logs use 2026-06-12."
+      ]
+    }
+  },
+  {
+    "id": "ordinal-date",
+    "name": "No ordinals in dates",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Dates and times",
+      "quote": "Don't use ordinals in dates. June 1, not June 1st."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept?|oct|nov|dec)\\.?\\s+\\d{1,2}(?:st|nd|rd|th)\\b",
+      "\\b\\d{1,2}(?:st|nd|rd|th)\\s+(?:of\\s+)?(?:january|february|march|april|may|june|july|august|september|october|november|december)\\b"
+    ],
+    "message": "The ordinal suffix adds nothing to a date.",
+    "fix": "Write \"June 1\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Update the connector before March 1st, 2027."
+      ],
+      "pass": [
+        "Update the connector before March 1, 2027."
+      ]
+    }
+  },
+  {
+    "id": "seasons",
+    "name": "Name a month or quarter, not a season",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Dates and times",
+      "quote": "Name a month or a quarter, not a season. Seasons differ by hemisphere."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:spring|summer|autumn|winter|fall)\\s+(?:of\\s+)?(?:19|20)\\d{2}\\b",
+      "\\b(?:this|next|last|early|late|in)\\s+(?:spring|summer|autumn|winter)\\b",
+      "\\b(?:this|next|last|early|late)\\s+fall\\b"
+    ],
+    "message": "A season names different months in each hemisphere.",
+    "fix": "Name the month or the quarter: \"in March\" or \"in Q1 2027\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Two-way sync ships in summer 2027.",
+        "Expect the change next spring."
+      ],
+      "pass": [
+        "Two-way sync ships in July 2027.",
+        "Expect the change in Q2 2027."
+      ]
+    }
+  },
+  {
+    "id": "am-pm-format",
+    "name": "Time of day with AM or PM",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Numerals or words",
+      "quote": "Time of day: Numeral plus AM or PM, or 24-hour time if the product uses it. 10:45 AM, or 22:45. Write noon and midnight, not 12:00."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b\\d{1,2}(?::\\d{2})?\\s?(?:am|pm|a\\.m\\.|p\\.m\\.)(?=\\s|$|[.,;)])",
+      "\\b\\d{1,2}:\\d{2}(?:AM|PM)\\b",
+      "\\b12:00(?:\\s?(?:AM|PM))?\\b"
+    ],
+    "message": "The guide writes times as a numeral, a space, and AM or PM in capitals. Noon and midnight are written as words.",
+    "fix": "Write \"10:45 AM\", \"noon\", or \"midnight\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The job runs at 10:45am.",
+        "Maintenance starts at 12:00 PM."
+      ],
+      "pass": [
+        "The job runs at 10:45 AM.",
+        "Maintenance starts at noon.",
+        "The job runs at 22:45."
+      ]
+    }
+  },
+  {
+    "id": "from-en-dash-range",
+    "name": "Don't put from before an en dash range",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Ranges",
+      "quote": "In prose, write from 5 through 50. Don't put from before an en dash range."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\bfrom\\s+\\d+(?:[.:]\\d+)?\\s?[–—-]\\s?\\d",
+      "\\bbetween\\s+\\d+(?:[.:]\\d+)?\\s?[–—-]\\s?\\d"
+    ],
+    "message": "\"From\" needs \"through\" or \"to\", not a dash.",
+    "fix": "Write \"from 5 through 50\" or \"10:00 AM to 2:00 PM\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Retries run from 5–50 times."
+      ],
+      "pass": [
+        "Retries run from 5 through 50 times.",
+        "The range 2016–2026 is shown."
+      ]
+    }
+  },
+  {
+    "id": "hyphen-range-in-prose",
+    "name": "Ranges in prose use words",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "scope": [
+      "paragraph",
+      "quote"
+    ],
+    "source": {
+      "section": "Numbers > Ranges",
+      "quote": "In prose, write from 5 through 50. In tables and UI, use an en dash with no spaces: 2016–2026. For times, use to: 10:00 AM to 2:00 PM."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b\\d{1,4}\\s?(?:-|–)\\s?\\d{1,4}\\s+(?:seconds|minutes|hours|days|weeks|months|years|percent|items|projects|tasks|members|users|files|steps|characters|retries|attempts|times|rows|columns|pages)\\b"
+    ],
+    "message": "In running text the guide spells out ranges. The en dash form is for tables and UI, where space is tight.",
+    "fix": "Write \"from 5 through 50\" or \"5 to 50\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Wait 5-10 minutes before you retry."
+      ],
+      "pass": [
+        "Wait 5 to 10 minutes before you retry.",
+        "| 2016–2026 |"
+      ]
+    }
+  },
+  {
+    "id": "thousands-separator",
+    "name": "Commas in numbers from four digits",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "scope": [
+      "paragraph",
+      "quote",
+      "list"
+    ],
+    "source": {
+      "section": "Numbers > Commas in numbers",
+      "quote": "Use a comma from four digits: 1,024. Don't use one in years (2026), after a decimal point, or in version numbers, port numbers, and identifiers (port 8080)."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(?:^|[\\s(])(\\d{5,})\\b(?![.:/-])"
+    ],
+    "message": "A plain number of five or more digits is hard to read without separators. Years, versions, ports, and identifiers are exempt, and this check can't always tell them apart, so it only suggests. Four-digit numbers are skipped because most are years.",
+    "fix": "Write \"10,000\" if it's a quantity. Leave an identifier, port, or version as it is.",
+    "exceptions": [
+      "port",
+      "id",
+      "ticket",
+      "issue",
+      "error",
+      "code"
+    ],
+    "examples": {
+      "flag": [
+        "The export holds 10000 rows."
+      ],
+      "pass": [
+        "The export holds 10,000 rows.",
+        "Connect on port 8080.",
+        "The year 2026."
+      ]
+    }
+  },
+  {
+    "id": "unnamed-currency",
+    "name": "Name the currency",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "source": {
+      "section": "Writing for a global audience",
+      "quote": "Name the currency: 25 USD, or US$25."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "(?:^|[\\s(])(\\$\\d)"
+    ],
+    "message": "Several countries use the dollar sign, and other currencies share symbols too.",
+    "fix": "Write \"25 USD\" or \"US$25\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The plan costs $25 a month."
+      ],
+      "pass": [
+        "The plan costs 25 USD a month.",
+        "The plan costs US$25 a month."
+      ]
+    }
+  },
+  {
+    "id": "key-combinations",
+    "name": "Join key names with a plus sign and no spaces",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Documentation > Formatting conventions",
+      "quote": "Keys and shortcuts: Key names as printed on the keyboard, joined by a plus sign with no spaces. Press Ctrl+S (Windows and Linux) or Cmd+S (macOS)."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b(?:Ctrl|Cmd|Alt|Shift|Option|Command|Control|Win|Meta)\\s+\\+\\s*[A-Za-z0-9]",
+      "\\b(?:Ctrl|Cmd|Alt|Shift|Option|Command|Control)\\s*-\\s*[A-Za-z0-9]{1,5}\\b",
+      "\\b(?:CTRL|CMD|ALT|SHIFT)\\s*[+-]\\s*[A-Za-z0-9]"
+    ],
+    "message": "Key names are written as printed on the keyboard and joined by a plus sign with no spaces.",
+    "fix": "Write \"Ctrl+S\" or \"Cmd+S\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Press Ctrl + S to save.",
+        "Press Ctrl-S to save."
+      ],
+      "pass": [
+        "Press Ctrl+S (Windows and Linux) or Cmd+S (macOS)."
+      ]
+    }
+  },
+  {
+    "id": "http-method-caps",
+    "name": "HTTP methods in capitals",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Documentation > API reference",
+      "quote": "Write the HTTP method in capitals and the path in code style: GET /projects/{id}."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b(?:get|post|put|patch|delete|head|options|Get|Post|Put|Patch|Delete)\\s+/[a-z{]"
+    ],
+    "message": "The method is a protocol token, so it's written in capitals.",
+    "fix": "Write \"GET /projects/{id}\" and put the path in code style.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Call get /projects/{id} to fetch it."
+      ],
+      "pass": [
+        "Call GET /projects/{id} to fetch it."
+      ]
+    }
+  },
+  {
+    "id": "wrong-preposition-ui",
+    "name": "In a dialog, on a tab",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "UI text > Interaction verbs",
+      "quote": "dialog, pane, list, box, window: in. tab, page, menu, toolbar: on."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\bin\\s+the\\s+(?:[A-Z][\\w ]{0,30}\\s+)?(?:tab|toolbar|menu)\\b(?!\\s+(?:bar|order|list|item|items))",
+      "\\bon\\s+the\\s+(?:[A-Z][\\w ]{0,30}\\s+)?(?:dialog|pane|window|list|box)\\b"
+    ],
+    "message": "The guide pairs each UI element with one preposition so instructions read the same everywhere.",
+    "fix": "Write \"in the dialog\" and \"on the Sharing tab\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "In the Sharing tab, select Invite people."
+      ],
+      "pass": [
+        "On the Sharing tab, select Invite people.",
+        "In the dialog, select Save."
+      ]
+    }
+  },
+  {
+    "id": "a-an-acronym",
+    "name": "Choose a or an by sound",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Terminology > Acronyms and abbreviations",
+      "quote": "Choose a or an by sound: an API, an SSO setting, a URL, an HTML file."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b[Aa]\\s+(?:API|APIs|SSO|SDK|HTML|HTTP|HTTPS|FAQ|FTP|IP|ID|OS|LDAP|LLM|MFA|NFS|RSS|SMS|SMTP|SLA|SLO|SSH|SSL|XML|XSS|HR|IDE|IAM|MVP|NDA|RBAC|RFC|S3|EC2|NPM|NTP|OKR|OTP)\\b",
+      "\\b[Aa]n\\s+(?:URL|URI|UI|UX|USB|UUID|UTC|CSV|PDF|JSON|YAML|CPU|GPU|GUI|GB|KB|MB|TB|DNS|CI|CD|CLI|PR|VM|VPN|JWT|QA|TLS|DB|PIN|POST|GET|PUT|TCP|UDP|VP|CTO|CEO|WAF|BI)\\b"
+    ],
+    "message": "The article depends on how the acronym is said aloud, not on its first letter.",
+    "fix": "Write \"an API\", \"an SSO setting\", \"a URL\", \"an HTML file\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Create a API key.",
+        "Open an URL."
+      ],
+      "pass": [
+        "Create an API key.",
+        "Open a URL.",
+        "Write an HTML file."
+      ]
+    }
+  }
+]

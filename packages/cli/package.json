@@ -1,0 +1,14 @@
+{
+  "name": "stylebound",
+  "version": "1.0.0-rc.1",
+  "publishName": "stylebound",
+  "private": true,
+  "description": "Stylebound command-line tool: check, export and verify.",
+  "license": "MIT",
+  "bin": {
+    "stylebound": "bin/stylebound.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

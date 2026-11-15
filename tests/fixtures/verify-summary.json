@@ -1,0 +1,230 @@
+{
+  "status": "loss",
+  "exitCode": 1,
+  "hashMismatch": false,
+  "paragraphs": {
+    "checked": 78,
+    "unchanged": 74,
+    "ok": 3,
+    "missing": 1,
+    "changed": 0,
+    "changedExpected": 0,
+    "removed": 0,
+    "added": 0
+  },
+  "items": {
+    "missing": 1,
+    "changed": 0,
+    "changedExpected": 0
+  },
+  "findings": {
+    "before": 52,
+    "after": 48,
+    "byRule": {
+      "announcing-opener": {
+        "before": 1,
+        "after": 0
+      },
+      "heading-title-case": {
+        "before": 1,
+        "after": 1
+      },
+      "wordy-phrases": {
+        "before": 1,
+        "after": 0
+      },
+      "the-user": {
+        "before": 1,
+        "after": 1
+      },
+      "select-not-click": {
+        "before": 1,
+        "after": 0
+      },
+      "condition-first": {
+        "before": 1,
+        "after": 0
+      },
+      "sign-in": {
+        "before": 1,
+        "after": 1
+      },
+      "we-recommend": {
+        "before": 1,
+        "after": 1
+      },
+      "email-spelling": {
+        "before": 1,
+        "after": 1
+      },
+      "plain-words": {
+        "before": 1,
+        "after": 1
+      },
+      "filler-intensifiers": {
+        "before": 1,
+        "after": 1
+      },
+      "marketing-words": {
+        "before": 1,
+        "after": 1
+      },
+      "latin-abbreviations": {
+        "before": 1,
+        "after": 1
+      },
+      "em-dash": {
+        "before": 1,
+        "after": 1
+      },
+      "semicolon": {
+        "before": 1,
+        "after": 1
+      },
+      "exclamation-point": {
+        "before": 1,
+        "after": 1
+      },
+      "curly-quotes": {
+        "before": 2,
+        "after": 2
+      },
+      "slash-for-or": {
+        "before": 1,
+        "after": 1
+      },
+      "passive-voice": {
+        "before": 1,
+        "after": 1
+      },
+      "future-tense": {
+        "before": 1,
+        "after": 1
+      },
+      "coming-soon": {
+        "before": 1,
+        "after": 1
+      },
+      "products-dont-think": {
+        "before": 1,
+        "after": 1
+      },
+      "promised-outcomes": {
+        "before": 1,
+        "after": 1
+      },
+      "numerals-in-prose": {
+        "before": 1,
+        "after": 1
+      },
+      "numeric-date": {
+        "before": 1,
+        "after": 1
+      },
+      "ordinal-date": {
+        "before": 1,
+        "after": 1
+      },
+      "unit-spacing": {
+        "before": 1,
+        "after": 1
+      },
+      "percent-in-prose": {
+        "before": 1,
+        "after": 1
+      },
+      "am-pm-format": {
+        "before": 1,
+        "after": 1
+      },
+      "seasons": {
+        "before": 1,
+        "after": 1
+      },
+      "biased-terms": {
+        "before": 1,
+        "after": 1
+      },
+      "generic-gendered-pronoun": {
+        "before": 1,
+        "after": 1
+      },
+      "gender-neutral-words": {
+        "before": 1,
+        "after": 1
+      },
+      "combat-metaphors": {
+        "before": 1,
+        "after": 1
+      },
+      "disability-language": {
+        "before": 1,
+        "after": 1
+      },
+      "please-sorry-oops": {
+        "before": 1,
+        "after": 1
+      },
+      "no-contractions": {
+        "before": 1,
+        "after": 1
+      },
+      "are-you-sure": {
+        "before": 1,
+        "after": 1
+      },
+      "something-went-wrong": {
+        "before": 1,
+        "after": 1
+      },
+      "click-here": {
+        "before": 1,
+        "after": 1
+      },
+      "positional-references": {
+        "before": 1,
+        "after": 1
+      },
+      "image-of-alt-text": {
+        "before": 1,
+        "after": 1
+      },
+      "step-without-period": {
+        "before": 1,
+        "after": 1
+      },
+      "list-item-lowercase": {
+        "before": 1,
+        "after": 1
+      },
+      "list-item-end-punctuation": {
+        "before": 1,
+        "after": 1
+      },
+      "blank-table-cell": {
+        "before": 1,
+        "after": 1
+      },
+      "heading-ampersand": {
+        "before": 1,
+        "after": 1
+      },
+      "chaining-adverbs": {
+        "before": 1,
+        "after": 1
+      },
+      "brand-casing": {
+        "before": 1,
+        "after": 1
+      },
+      "one-or-more-s": {
+        "before": 1,
+        "after": 1
+      },
+      "heading-period": {
+        "before": 1,
+        "after": 1
+      }
+    }
+  }
+}

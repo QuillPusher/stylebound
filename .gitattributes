@@ -1,0 +1,2 @@
+# Check out text files with LF line endings on every OS, so test results match.
+* text=auto eol=lf

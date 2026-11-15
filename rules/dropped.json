@@ -1,0 +1,42 @@
+[
+  {
+    "id": "phrasal-verbs",
+    "action": "dropped",
+    "flagged": "A verb plus a particle, such as set up, back up, turn on, work out or free up.",
+    "why": "Many phrasal verbs are the plainest wording a reader knows: 'turn on' is clearer to most readers than 'enable'. A fixed list cannot tell a verb from a noun ('set up' and 'setup', 'log in' and 'login') or a particle from a preposition ('look up the value' and 'walk up the stairs'). The suggested replacement often swaps a plain word for a more formal one.",
+    "evidence": "The trial documents use 'back up', 'set up', 'turn on', 'work out' and 'free up'. In most cases the single-word replacement is not clearly plainer. The answer key labels these 'none'.",
+    "returns": "Only if a part-of-speech tagger is added to the core and a trial shows at least 90% precision.",
+    "approvedBy": "owner (plan v5 minimalism review); never implemented",
+    "date": "2026-10-14"
+  },
+  {
+    "id": "noun-cluster",
+    "action": "dropped",
+    "flagged": "A run of more than three nouns, for example 'webhook notification delivery retry backoff configuration'.",
+    "why": "Without part-of-speech tagging the rule cannot tell nouns from adjectives or verbs. It would flag product names, headings, table headers and API names. Keeping it quiet needs a long exemption list, which is maintenance the project does not want.",
+    "evidence": "The six trial documents contain one real noun cluster and many capitalised names, headings and identifiers that a heuristic would flag.",
+    "returns": "Only with a part-of-speech tagger and a trial result of at least 90% precision.",
+    "approvedBy": "owner (plan v5 minimalism review); never implemented",
+    "date": "2026-10-14"
+  },
+  {
+    "id": "ing-clause-after-comma",
+    "action": "dropped",
+    "flagged": "A participle clause after a comma, for example ', making it faster'.",
+    "why": "Participle clauses are often correct and clear. The harm they cause is small, and the sentence-length rule already catches the long sentences where they hurt.",
+    "evidence": "No planted issue in the answer key depends on this rule.",
+    "returns": "If a trial shows a real comprehension problem that only this rule catches, at 90% precision.",
+    "approvedBy": "owner (plan v5 minimalism review); never implemented",
+    "date": "2026-10-14"
+  },
+  {
+    "id": "one-term-per-concept",
+    "action": "dropped",
+    "flagged": "A document that uses more than one word of a synonym group (check, verify, confirm; start, launch, initiate; delete, remove; show, display), at the first use of each word.",
+    "why": "Below the 90% precision gate. Most findings were delete and remove used for arguably different actions (delete a file locally, remove it from the bucket), which a word list cannot tell apart. The owner chose to drop it rather than make it opt-in, because an opt-in rule that rarely helps adds confusion.",
+    "evidence": "Precision gate, chunk 2.5: 10 findings on the six trial documents, 4 correct, 6 debatable, 0 false positives: 40%. See trial/judgements.json and npm run precision.",
+    "returns": "If a project glossary needs synonym groups and a trial on real documents shows at least 90% precision for them.",
+    "approvedBy": "owner, in chat on 2026-10-15 (\"dropped rather than making it opt-in\")",
+    "date": "2026-10-15"
+  }
+]

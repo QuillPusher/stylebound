@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify report: sample.md</title>
+<style>
+:root { --fg: #1f2328; --muted: #59636e; --bg: #ffffff; --panel: #f6f8fa; --line: #d0d7de;
+  --error: #cf222e; --error-bg: #ffebe9; --error-hl: #ffc9c6; --error-line: #a40e26; --warning: #9a6700; --warning-bg: #fff8c5; --suggestion: #0969da; --suggestion-bg: #ddf4ff;
+  --ins: #1a7f37; --ins-bg: #dafbe1; --del: #cf222e; --del-bg: #ffebe9; --ink: #1f2328; }
+@media (prefers-color-scheme: dark) {
+  :root { --fg: #e6edf3; --muted: #9198a1; --bg: #0d1117; --panel: #151b23; --line: #3d444d;
+    --error: #ff7b72; --error-bg: #4b1113; --error-hl: #6b1a1e; --error-line: #ff8f87; --warning: #d29922; --warning-bg: #3b2e0a; --suggestion: #58a6ff; --suggestion-bg: #0c2d6b;
+    --ins: #3fb950; --ins-bg: #0f3d1d; --del: #ff7b72; --del-bg: #4b1113; --ink: #c9d1d9; }
+}
+* { box-sizing: border-box; }
+body { font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--fg); background: var(--bg); margin: 0; }
+main { max-width: 78rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
+h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; border-bottom: 1px solid var(--line); padding-bottom: .25rem; }
+h3 { font-size: 1rem; margin: 1.25rem 0 .4rem; }
+.meta { color: var(--muted); margin: 0 0 1rem; }
+.counts { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0; padding: 0; list-style: none; }
+.counts li { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .35rem .7rem; }
+.doc { white-space: pre-wrap; word-wrap: break-word; background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  padding: 1rem; font: 14px/1.85 ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; }
+mark { color: inherit; border-radius: 3px; padding: 0 1px; }
+mark.error { background: var(--error-hl); box-shadow: inset 0 -2px var(--error-line); }
+mark.warning { background: var(--warning-bg); box-shadow: inset 0 -2px var(--warning); }
+mark.suggestion { background: var(--suggestion-bg); box-shadow: inset 0 -2px var(--suggestion); }
+mark:target, a.anchor:target + mark { outline: 2px solid var(--fg); }
+.sev { display: inline-block; min-width: 5.5rem; font-size: .8rem; font-weight: 600; text-transform: uppercase; }
+.sev.error { color: var(--error); } .sev.warning { color: var(--warning); } .sev.suggestion { color: var(--suggestion); }
+ul.findings { list-style: none; padding: 0; margin: 0; }
+ul.findings li { padding: .35rem 0; border-bottom: 1px solid var(--line); }
+code, .rule { font: 13px ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; }
+.fix { color: var(--muted); }
+.banner { border-radius: 6px; padding: .75rem 1rem; font-weight: 600; margin: 1rem 0; border: 1px solid var(--line); }
+.banner.ok { background: var(--ins-bg); color: var(--ins); }
+.banner.loss, .banner.changed { background: var(--del-bg); color: var(--del); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.pair > div { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .6rem .8rem; white-space: pre-wrap; word-wrap: break-word; }
+.pair .label { display: block; color: var(--muted); font-size: .8rem; margin-bottom: .25rem; }
+ins { background: var(--ins-bg); color: var(--ins); text-decoration: none; }
+del { background: var(--del-bg); color: var(--del); }
+.lost { color: var(--del); font-weight: 600; }
+.expected { color: var(--warning); }
+table { border-collapse: collapse; }
+td, th { border: 1px solid var(--line); padding: .3rem .6rem; text-align: left; }
+@media (max-width: 50rem) { .pair { grid-template-columns: 1fr; } }
+[hidden] { display: none !important; }
+.notice { background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 6px; padding: .45rem .75rem; margin: .5rem 0; }
+.callout p { margin: 0 0 .3rem; }
+.callout ul { margin: 0; padding-left: 1.2rem; list-style: none; }
+.callout li { margin: .15rem 0; }
+.ic { width: 1.15em; height: 1.15em; vertical-align: -0.2em; }
+.ic.skipall, .ic.fixall { width: 1.7em; }
+.ic.ptr { width: 1.7em; height: 1.55em; vertical-align: -0.45em; }
+.callout { background: var(--warning-bg); border: 1px solid var(--warning); border-left: 6px solid var(--warning); border-radius: 0 6px 6px 0;
+  padding: .7rem 1rem; margin: .5rem 0 1rem; font-weight: 600; }
+.filters, .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0; }
+button { font: inherit; font-size: .9rem; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  padding: .35rem .75rem; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button[aria-pressed="true"] { border-color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+button .sev { min-width: 0; margin-right: .35rem; }
+.actions .retro { display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; color: #1f2328; border: 2px solid var(--ink);
+  border-radius: 4px; padding: .45rem .9rem; box-shadow: 3px 3px 0 var(--ink); transition: transform .05s, box-shadow .05s; }
+.actions .retro svg { width: 1.15em; height: 1.15em; flex: none; }
+.actions .sb-copy { background: #f2c14e; }
+.actions .sb-export { background: #7cc4b2; }
+.actions .retro:hover { border-color: var(--ink); transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
+.actions .retro:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+.doc mark[data-g] { cursor: pointer; }
+.doc mark mark { padding: 1px 3px; margin: 0 2px; }
+.doc mark mark.error { box-shadow: inset 0 -2px var(--error-line), 0 0 0 1px var(--error-line); }
+.doc mark mark.warning { box-shadow: inset 0 -2px var(--warning), 0 0 0 1px var(--warning); }
+.doc mark mark.suggestion { box-shadow: inset 0 -2px var(--suggestion), 0 0 0 1px var(--suggestion); }
+.doc mark.off { background: none; box-shadow: none; padding: 0; margin: 0; cursor: text; pointer-events: none; }
+.doc mark:not(.off) { pointer-events: auto; }
+.doc mark.skipped { background: none; box-shadow: none; border-bottom: 2px dotted var(--muted); color: var(--muted); }
+.doc mark.skipped.error { border-bottom-color: var(--error-line); }
+.doc mark.skipped.warning { border-bottom-color: var(--warning); }
+.doc mark.skipped.suggestion { border-bottom-color: var(--suggestion); }
+.doc mark.fix { outline: 2px solid var(--ins); outline-offset: 0; }
+.doc mark:focus-visible { outline: 2px solid var(--fg); }
+.qa { display: inline-flex; gap: 2px; margin: 0 3px 0 2px; vertical-align: -0.2em; user-select: none; pointer-events: auto; }
+.qa .q { width: 1.15em; height: 1.15em; padding: 0; margin: 0; border: 0; border-radius: 4px; background: none; box-shadow: none;
+  line-height: 0; cursor: pointer; }
+.qa .q.skipall, .qa .q.fixall { width: 1.7em; }
+.qa .q svg { display: block; width: 100%; height: 100%; }
+.qa .q:hover { transform: scale(1.15); }
+.qa .q[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--fg); }
+.qa:has(.q[aria-pressed="true"]) .q:not([aria-pressed="true"]) { opacity: .4; }
+.doc.noquick .qa { display: none; }
+.quick-switch { margin-left: auto; align-self: center; font-size: .8rem; color: var(--muted); cursor: pointer; }
+.float { position: absolute; z-index: 10; max-width: 32rem; background: var(--bg); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 6px; box-shadow: 0 4px 16px rgba(0, 0, 0, .2); padding: .5rem .75rem; font-size: .9rem; }
+#sb-tip { pointer-events: none; }
+.float .item + .item { border-top: 1px solid var(--line); margin-top: .5rem; padding-top: .5rem; }
+.float .sev { min-width: 0; margin-right: .5rem; }
+.float .rule { margin-right: .35rem; }
+.float .flagged { font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace; }
+.float .state { color: var(--muted); font-size: .8rem; }
+.float .hint { color: var(--muted); font-size: .8rem; margin-top: .35rem; }
+.float .buttons { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .45rem; }
+.float .close { float: right; padding: 0 .45rem; margin: 0 0 .25rem .5rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Verify report: sample.md</h1>
+<p class="meta">Against sample.style-review.json (profile strict-plain). Generated 2026-10-15T00:00:00Z by stylebound-core 1.0.0-rc.1.</p>
+<div class="banner loss">Loss: 1 must-keep item missing.</div>
+<table>
+<tr><th>Paragraphs checked</th><td>78</td><th>Unchanged</th><td>74</td><th>Changed, every item kept</th><td>3</td></tr>
+<tr><th>With missing items</th><td>1</td><th>With changed modals</th><td>0</td><th>Changed as a finding asked</th><td>0</td></tr>
+<tr><th>Removed</th><td>0</td><th>New</th><td>0</td><th>Findings before, after</th><td>52, 48</td></tr>
+</table>
+<h2>Paragraphs to review</h2>
+<ul><li><a href="#p2">p2</a> (original line 5): <span class="lost">missing modals “can”</span></li></ul>
+<h2>Changed paragraphs</h2>
+<h3 id="p2">p2: missing (original line 5; edited line 5)</h3>
+<ul><li class="lost">Missing modals: “can”</li></ul>
+<div class="pair"><div><span class="label">Original</span><del>In today&#39;s fast-paced digital world, teams</del> need one list<del> they can trust</del>.</div><div><span class="label">Edited</span><ins>Teams</ins> need one list.</div></div>
+<h3 id="p4">p4: ok (original line 9; edited line 9)</h3>
+
+<div class="pair"><div><span class="label">Original</span>Create a project <del>in order </del>to group related tasks.</div><div><span class="label">Edited</span>Create a project to group related tasks.</div></div>
+<h3 id="p6">p6: ok (original line 13; edited line 13)</h3>
+
+<div class="pair"><div><span class="label">Original</span><del>Click </del>**Save**<del> when you finish</del>.</div><div><span class="label">Edited</span><ins>When you finish, select </ins>**Save**.</div></div>
+
+<h2>Findings after the edit</h2>
+<ul class="findings">
+<li><span class="sev warning">warning</span> line 7 <span class="rule">heading-title-case</span>: “Getting Started With Projects”. This heading looks like title case: two or more words after the first are capitalized. Proper nouns and acronyms stay capitalized, so check that the capitals are names.</li>
+<li><span class="sev error">error</span> line 11 <span class="rule">the-user</span>: “The user”. The guide addresses the reader directly as &quot;you&quot;. &quot;The user&quot; puts a third person between the product and the reader.</li>
+<li><span class="sev warning">warning</span> line 17 <span class="rule">sign-in</span>: “Log in”. House style uses &quot;sign in&quot; as the verb and &quot;sign-in&quot; as the noun. A swap that would rename an existing UI label everywhere is a product decision, so flag that case rather than changing one screen.</li>
+<li><span class="sev error">error</span> line 19 <span class="rule">we-recommend</span>: “We recommend”. Advice phrased as a wish or as the company&#39;s opinion is longer and softer than a command. The guide reserves &quot;we&quot; for times when the company must be the speaker, such as a privacy notice or an outage update.</li>
+<li><span class="sev warning">warning</span> line 21 <span class="rule">email-spelling</span>: “e-mail”. The guide spells it as one word with no hyphen.</li>
+<li><span class="sev warning">warning</span> line 25 <span class="rule">plain-words</span>: “Utilize”. The guide prefers the short, common word. &quot;Enable&quot; stays when it means turn on.</li>
+<li><span class="sev warning">warning</span> line 27 <span class="rule">filler-intensifiers</span>: “very”. These words add emphasis but no fact. Inside a quotation or a product name they stay.</li>
+<li><span class="sev warning">warning</span> line 29 <span class="rule">marketing-words</span>: “powerful”. This word makes a claim without a fact behind it. Say what the product does instead.</li>
+<li><span class="sev warning">warning</span> line 31 <span class="rule">latin-abbreviations</span>: “e.g.”. Readers and translation tools misread Latin abbreviations.</li>
+<li><span class="sev error">error</span> line 35 <span class="rule">em-dash</span>: “—”. The em dash is the strongest machine-written tell, and every job it does has a clearer replacement. A double hyphen is treated as an em dash in Markdown.</li>
+<li><span class="sev error">error</span> line 37 <span class="rule">semicolon</span>: “;”. A sentence that needs a semicolon is usually two sentences or a list.</li>
+<li><span class="sev error">error</span> line 39 <span class="rule">exclamation-point</span>: “!”. An exclamation point reads as shouting in an error and as gushing in a success message.</li>
+<li><span class="sev warning">warning</span> line 41 <span class="rule">curly-quotes</span>: ““”. Curly quotation marks and apostrophes usually come from a word processor. They don&#39;t render the same everywhere, and they break copied values.</li>
+<li><span class="sev warning">warning</span> line 41 <span class="rule">curly-quotes</span>: “””. Curly quotation marks and apostrophes usually come from a word processor. They don&#39;t render the same everywhere, and they break copied values.</li>
+<li><span class="sev warning">warning</span> line 43 <span class="rule">slash-for-or</span>: “project/task”. A slash asks the reader to guess whether you mean &quot;and&quot;, &quot;or&quot;, or both. Fixed pairs such as on/off and read/write are fine.</li>
+<li><span class="sev suggestion">suggestion</span> line 47 <span class="rule">passive-voice</span>: “is generated by”. A &quot;was done by&quot; sentence hides the actor at the end. The guide converts to active only when the actor is named or obvious, and keeps passive when it keeps blame off the reader or when the receiver is the point. Only passives with an explicit &quot;by&quot; are flagged.</li>
+<li><span class="sev suggestion">suggestion</span> line 49 <span class="rule">future-tense</span>: “project will move”. Product behavior that happens every time is described in the present tense. A real statement about timing (&quot;will be available in the next release&quot;) is a fact and stays.</li>
+<li><span class="sev suggestion">suggestion</span> line 51 <span class="rule">coming-soon</span>: “on the roadmap”. A feature guide that describes a planned feature becomes a promise. The guide moves such statements to release notes or a roadmap. This is a flag for the author, not an edit.</li>
+<li><span class="sev suggestion">suggestion</span> line 53 <span class="rule">products-dont-think</span>: “The assistant understands”. This gives the product a mind. The guide treats it as a claim for the author to confirm, not a style edit.</li>
+<li><span class="sev suggestion">suggestion</span> line 55 <span class="rule">promised-outcomes</span>: “guarantees”. An unqualified promise is one the product can&#39;t keep, because results depend on the customer&#39;s data and configuration. This is a claim for the author, not a style edit.</li>
+<li><span class="sev warning">warning</span> line 59 <span class="rule">numerals-in-prose</span>: “5”. In prose, counts below 10 are words. Numerals stay for measurements, durations, times, versions, percentages, identifiers, and when a sentence mixes numbers of the same kind above and below 10.</li>
+<li><span class="sev warning">warning</span> line 61 <span class="rule">numeric-date</span>: “6/12/2027”. A numeric date reads differently in different countries. ISO dates belong in data formats, logs, and code.</li>
+<li><span class="sev error">error</span> line 63 <span class="rule">ordinal-date</span>: “March 1st”. The ordinal suffix adds nothing to a date.</li>
+<li><span class="sev warning">warning</span> line 65 <span class="rule">unit-spacing</span>: “25MB”. The unit is a separate word, and the percent sign is not.</li>
+<li><span class="sev warning">warning</span> line 67 <span class="rule">percent-in-prose</span>: “40%”. In running text the guide spells out &quot;percent&quot;. The symbol is for UI strings and tables.</li>
+<li><span class="sev warning">warning</span> line 69 <span class="rule">am-pm-format</span>: “9am”. The guide writes times as a numeral, a space, and AM or PM in capitals. Noon and midnight are written as words.</li>
+<li><span class="sev warning">warning</span> line 71 <span class="rule">seasons</span>: “next spring”. A season names different months in each hemisphere.</li>
+<li><span class="sev warning">warning</span> line 75 <span class="rule">biased-terms</span>: “whitelist”. The guide replaces this term. A term that&#39;s part of a command, a setting, or an API stays as written, so flag that case for the product team instead of editing the prose.</li>
+<li><span class="sev suggestion">suggestion</span> line 77 <span class="rule">generic-gendered-pronoun</span>: “Each reviewer sees his”. A generic person, such as &quot;the admin&quot; or &quot;a reviewer&quot;, gets no gendered pronoun. Gendered pronouns are right only for a named person who uses them and in direct quotations.</li>
+<li><span class="sev warning">warning</span> line 79 <span class="rule">gender-neutral-words</span>: “manned”. The guide&#39;s table gives a gender-neutral word for this one.</li>
+<li><span class="sev warning">warning</span> line 81 <span class="rule">combat-metaphors</span>: “eliminates”. Combat language makes an ordinary action sound violent and translates badly. A technical term such as the `kill` command stays as written.</li>
+<li><span class="sev warning">warning</span> line 83 <span class="rule">disability-language</span>: “cripple”. Focus on people, not conditions, and don&#39;t borrow a disability as a metaphor.</li>
+<li><span class="sev error">error</span> line 87 <span class="rule">please-sorry-oops</span>: “Oops”. Politeness words add length and, in an error, sound like blame or panic. Say what happened and what to do.</li>
+<li><span class="sev error">error</span> line 87 <span class="rule">no-contractions</span>: “didn&#39;t”. Strict-plain text uses full forms. A contraction is easy to misread for readers of English as a second language, and the negative in &#39;can&#39;t&#39; or &#39;don&#39;t&#39; is easy to miss.</li>
+<li><span class="sev error">error</span> line 89 <span class="rule">are-you-sure</span>: “Are you sure”. A confirmation names the object and the consequence so the reader knows what they&#39;re deciding.</li>
+<li><span class="sev suggestion">suggestion</span> line 91 <span class="rule">something-went-wrong</span>: “Something went wrong”. A generic error gives the reader nothing to act on. If the cause is known, name it and say what to do.</li>
+<li><span class="sev error">error</span> line 93 <span class="rule">click-here</span>: “click here”. &quot;Here&quot; tells the reader nothing about where the link goes, and screen readers list links by their text.</li>
+<li><span class="sev warning">warning</span> line 97 <span class="rule">positional-references</span>: “described above”. Position breaks when the layout changes or a screen reader reads the page in order.</li>
+<li><span class="sev error">error</span> line 99 <span class="rule">image-of-alt-text</span>: “Screenshot of”. A screen reader already announces that this is an image.</li>
+<li><span class="sev warning">warning</span> line 105 <span class="rule">step-without-period</span>: “t”. Each step in a numbered procedure is a full sentence and ends with a period.</li>
+<li><span class="sev warning">warning</span> line 113 <span class="rule">list-item-lowercase</span>: “c”. List items start with a capital letter, even when they&#39;re fragments. A code value or identifier that must stay lowercase is the exception, and it belongs in code style.</li>
+<li><span class="sev error">error</span> line 114 <span class="rule">list-item-end-punctuation</span>: “,”. A list item stands on its own. Trailing punctuation or conjunctions turn the list back into a sentence.</li>
+<li><span class="sev error">error</span> line 123 <span class="rule">blank-table-cell</span>: “ ”. A blank cell could mean none, not applicable, or forgotten.</li>
+<li><span class="sev warning">warning</span> line 126 <span class="rule">heading-ampersand</span>: “ + ”. Symbols in a heading read as abbreviations and don&#39;t translate.</li>
+<li><span class="sev warning">warning</span> line 128 <span class="rule">chaining-adverbs</span>: “Moreover”. These connectors stitch paragraphs together without adding a fact. Each paragraph should stand on its own first sentence.</li>
+<li><span class="sev warning">warning</span> line 130 <span class="rule">brand-casing</span>: “Github”. The brand table in the guide gives the owner&#39;s casing. Only the brands the guide itself prints are checked. Add your own rows to this rule when you fill in the brand table.</li>
+<li><span class="sev error">error</span> line 132 <span class="rule">one-or-more-s</span>: “(s)”. &quot;(s)&quot; asks the reader to parse two sentences at once and breaks screen readers.</li>
+<li><span class="sev error">error</span> line 134 <span class="rule">heading-period</span>: “.”. Headings and labels take no end punctuation other than a question mark.</li>
+</ul>
+</main>
+</body>
+</html>
