@@ -1,9 +1,0 @@
-Verified sample.md against sample.style-review.json (profile strict-plain).
-Paragraphs: 78 checked, 74 unchanged, 3 changed with every item kept, 1 with missing items, 0 with changed modals, 0 changed as a finding asked, 0 removed, 0 new.
-Must-keep items: 1 missing, 0 changed, 0 changed as a finding asked.
-Findings: 52 before the edit, 48 after.
-
-Paragraphs to review:
-  p2 (original line 5): missing modal "can"
-
-LOSS: 1 must-keep item missing. Exit code 1.
