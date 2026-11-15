@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stylebound: rules dropped or demoted</title>
+<style>
+body { font: 15px/1.5 system-ui, sans-serif; margin: 2rem auto; max-width: 75rem; padding: 0 1rem; color: #1f2328; }
+h1 { font-size: 1.5rem; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #d0d7de; padding: .5rem; text-align: left; vertical-align: top; }
+th { background: #f6f8fa; }
+code { font-size: .9em; }
+</style>
+</head>
+<body>
+<h1>Rules dropped or demoted</h1>
+<p>Every rule that was removed or made opt-in, why, and who approved it. Generated from <code>rules/dropped.json</code> by <code>npm run rules:report</code>; do not edit this page by hand.</p>
+<table>
+<thead><tr><th>Rule</th><th>Action</th><th>What it flagged</th><th>Why</th><th>Evidence</th><th>What would bring it back</th><th>Approved</th></tr></thead>
+<tbody>
+<tr>
+<td><code>phrasal-verbs</code></td>
+<td>dropped</td>
+<td>A verb plus a particle, such as set up, back up, turn on, work out or free up.</td>
+<td>Many phrasal verbs are the plainest wording a reader knows: 'turn on' is clearer to most readers than 'enable'. A fixed list cannot tell a verb from a noun ('set up' and 'setup', 'log in' and 'login') or a particle from a preposition ('look up the value' and 'walk up the stairs'). The suggested replacement often swaps a plain word for a more formal one.</td>
+<td>The trial documents use 'back up', 'set up', 'turn on', 'work out' and 'free up'. In most cases the single-word replacement is not clearly plainer. The answer key labels these 'none'.</td>
+<td>Only if a part-of-speech tagger is added to the core and a trial shows at least 90% precision.</td>
+<td>owner (plan v5 minimalism review); never implemented, 2026-10-14</td>
+</tr>
+<tr>
+<td><code>noun-cluster</code></td>
+<td>dropped</td>
+<td>A run of more than three nouns, for example 'webhook notification delivery retry backoff configuration'.</td>
+<td>Without part-of-speech tagging the rule cannot tell nouns from adjectives or verbs. It would flag product names, headings, table headers and API names. Keeping it quiet needs a long exemption list, which is maintenance the project does not want.</td>
+<td>The six trial documents contain one real noun cluster and many capitalised names, headings and identifiers that a heuristic would flag.</td>
+<td>Only with a part-of-speech tagger and a trial result of at least 90% precision.</td>
+<td>owner (plan v5 minimalism review); never implemented, 2026-10-14</td>
+</tr>
+<tr>
+<td><code>ing-clause-after-comma</code></td>
+<td>dropped</td>
+<td>A participle clause after a comma, for example ', making it faster'.</td>
+<td>Participle clauses are often correct and clear. The harm they cause is small, and the sentence-length rule already catches the long sentences where they hurt.</td>
+<td>No planted issue in the answer key depends on this rule.</td>
+<td>If a trial shows a real comprehension problem that only this rule catches, at 90% precision.</td>
+<td>owner (plan v5 minimalism review); never implemented, 2026-10-14</td>
+</tr>
+<tr>
+<td><code>one-term-per-concept</code></td>
+<td>dropped</td>
+<td>A document that uses more than one word of a synonym group (check, verify, confirm; start, launch, initiate; delete, remove; show, display), at the first use of each word.</td>
+<td>Below the 90% precision gate. Most findings were delete and remove used for arguably different actions (delete a file locally, remove it from the bucket), which a word list cannot tell apart. The owner chose to drop it rather than make it opt-in, because an opt-in rule that rarely helps adds confusion.</td>
+<td>Precision gate, chunk 2.5: 10 findings on the six trial documents, 4 correct, 6 debatable, 0 false positives: 40%. See trial/judgements.json and npm run precision.</td>
+<td>If a project glossary needs synonym groups and a trial on real documents shows at least 90% precision for them.</td>
+<td>owner, in chat on 2026-10-15 (&quot;dropped rather than making it opt-in&quot;), 2026-10-15</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

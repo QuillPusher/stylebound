@@ -1,0 +1,5 @@
+# Same line endings on every OS, so issue counts and offsets match in CI.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.docx binary

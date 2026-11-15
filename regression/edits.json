@@ -1,0 +1,965 @@
+{
+ "about": "Edits of the 66 regression paragraphs for the gate (npm run gate). good: a hand-written plain rewrite that keeps every fact on the checklist. bad: made from the good edit by removing or weakening one must-keep item (npm run gate -- --write-edits rebuilds them). MIT.",
+ "factsReviewed": {
+  "by": "agent, paragraph by paragraph against the fact checklists",
+  "date": "2026-10-15",
+  "owner": "pending",
+  "note": "RB-067 to RB-084 (trial paragraphs, chunk 2.6) were checked against their fact checklists from the answer key on 2026-10-15."
+ },
+ "paragraphs": {
+  "RB-001": {
+   "good": "Acme Tasks keeps the projects, tasks and deadlines of your team in one place.",
+   "bad": []
+  },
+  "RB-002": {
+   "good": "Create a project to group related tasks.",
+   "bad": []
+  },
+  "RB-003": {
+   "good": "You can invite teammates from the project page.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "can",
+     "text": "You might invite teammates from the project page."
+    }
+   ]
+  },
+  "RB-004": {
+   "good": "When you finish, select **Save**.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": " you finish, select **Save**."
+    }
+   ]
+  },
+  "RB-005": {
+   "good": "Sign in with your work email address.",
+   "bad": []
+  },
+  "RB-006": {
+   "good": "We recommend that you turn on multifactor authentication.",
+   "bad": []
+  },
+  "RB-007": {
+   "good": "You can export reports in common formats, for example CSV and PDF.",
+   "bad": []
+  },
+  "RB-008": {
+   "good": "Each task has a title, a due date and an owner.",
+   "bad": []
+  },
+  "RB-009": {
+   "good": "Tasks sync every hour. Comments sync right away.",
+   "bad": []
+  },
+  "RB-010": {
+   "good": "Type \"Today\" to set the due date.",
+   "bad": []
+  },
+  "RB-011": {
+   "good": "The scheduler generates the weekly report.",
+   "bad": []
+  },
+  "RB-012": {
+   "good": "When you select **Archive**, the project moves to the archive.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": " you select **Archive**, the project moves to the archive."
+    }
+   ]
+  },
+  "RB-013": {
+   "good": "Two-way calendar sync is planned for a future release.",
+   "bad": []
+  },
+  "RB-014": {
+   "good": "The free plan includes five projects.",
+   "bad": []
+  },
+  "RB-015": {
+   "good": "Plans renew on June 12, 2027.",
+   "bad": []
+  },
+  "RB-016": {
+   "good": "The beta ends on March 1, 2027.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "2027",
+     "text": "The beta ends on March 1,."
+    }
+   ]
+  },
+  "RB-017": {
+   "good": "Each attachment can be up to 25 MB.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "can",
+     "text": "Each attachment might be up to 25 MB."
+    }
+   ]
+  },
+  "RB-018": {
+   "good": "About 40 percent of teams use templates.",
+   "bad": []
+  },
+  "RB-019": {
+   "good": "The daily digest arrives at 9 AM.",
+   "bad": []
+  },
+  "RB-020": {
+   "good": "Add trusted domains to the allowlist.",
+   "bad": []
+  },
+  "RB-021": {
+   "good": "This update removes duplicate tasks.",
+   "bad": []
+  },
+  "RB-022": {
+   "good": "The file did not upload.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "didn't",
+     "text": "The file did upload."
+    }
+   ]
+  },
+  "RB-023": {
+   "good": "Delete this project?",
+   "bad": []
+  },
+  "RB-024": {
+   "good": "You need the Owner role on the project.\n\n1. Open the project.\n2. Select **Share**.\n3. Enter the email address of the person.",
+   "bad": []
+  },
+  "RB-025": {
+   "good": "Every new task needs these three things:\n\n- Create a title.\n- Assign an owner.\n- Set a due date.",
+   "bad": []
+  },
+  "RB-026": {
+   "good": "| Plan | Projects | Support |\n| --- | --- | --- |\n| Free | 3 | None |\n| Team | 50 | Email |",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "3",
+     "text": "| Plan | Projects | Support |\n| --- | --- | --- |\n| Free | | None |\n| Team | 50 | Email |"
+    }
+   ]
+  },
+  "RB-027": {
+   "good": "Connect your GitHub account to link commits to tasks.",
+   "bad": []
+  },
+  "RB-028": {
+   "good": "Exports include archived projects.",
+   "bad": []
+  },
+  "RB-029": {
+   "good": "The dashboard refreshes every 5 minutes. Your team sees the latest numbers.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "5 minutes",
+     "text": "The dashboard refreshes every. Your team sees the latest numbers."
+    }
+   ]
+  },
+  "RB-030": {
+   "good": "When someone assigns a task to you, you get an email.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": " someone assigns a task to you, you get an email."
+    }
+   ]
+  },
+  "RB-031": {
+   "good": "The scheduler generates the report every Monday.",
+   "bad": []
+  },
+  "RB-032": {
+   "good": "The file is larger than 25 MB. Choose a smaller file.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "25 MB",
+     "text": "The file is larger than. Choose a smaller file."
+    }
+   ]
+  },
+  "RB-033": {
+   "good": "Changes from the last 10 minutes were not saved. To see which changes, check the activity log.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "10 minutes",
+     "text": "Changes from the last were not saved. To see which changes, check the activity log."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "weren't",
+     "text": "Changes from the last 10 minutes were saved. To see which changes, check the activity log."
+    }
+   ]
+  },
+  "RB-034": {
+   "good": "Anyone with this link can view the project.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "can",
+     "text": "Anyone with this link might view the project."
+    }
+   ]
+  },
+  "RB-035": {
+   "good": "If the connector cannot reach the sync API for 30 seconds, it saves your changes locally. The dashboard then shows the Disconnected status. Check network access to the API endpoint.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "30 seconds",
+     "text": "If the connector cannot reach the sync API for, it saves your changes locally. The dashboard then shows the Disconnected status. Check network access to the API endpoint."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "can't",
+     "text": "If the connector can reach the sync API for 30 seconds, it saves your changes locally. The dashboard then shows the Disconnected status. Check network access to the API endpoint."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": " the connector cannot reach the sync API for 30 seconds, it saves your changes locally. The dashboard then shows the Disconnected status. Check network access to the API endpoint."
+    }
+   ]
+  },
+  "RB-036": {
+   "good": "The app exports archived projects only on request.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "only",
+     "text": "The app exports archived projects on request."
+    }
+   ]
+  },
+  "RB-037": {
+   "good": "1. Open the project.\n2. Select **Share**.\n3. In **Email address**, enter the email address of the person.\n4. Optional: In **Message**, add a note.\n5. Select **Send invite**.",
+   "bad": []
+  },
+  "RB-038": {
+   "good": "Sync runs every 15 minutes. If you select **Sync now**, it runs right away.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "15 minutes",
+     "text": "Sync runs every. If you select **Sync now**, it runs right away."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "Sync runs every 15 minutes. you select **Sync now**, it runs right away."
+    }
+   ]
+  },
+  "RB-039": {
+   "good": "Recommendations rank the articles that most likely answer the question.",
+   "bad": []
+  },
+  "RB-040": {
+   "good": "Update the connector to version 2.3 before March 1, 2027.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "2.3",
+     "text": "Update the connector to version before March 1, 2027."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": "Update the connector to version 2.3 March 1, 2027."
+    }
+   ]
+  },
+  "RB-041": {
+   "good": "Before you install Stylebound, make sure that the WebView2 runtime is present. Windows 11 includes it. On Windows 10, download it from Microsoft and run the installer. Then restart the computer.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "11",
+     "text": "Before you install Stylebound, make sure that the WebView2 runtime is present. Windows includes it. On Windows 10, download it from Microsoft and run the installer. Then restart the computer."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": " you install Stylebound, make sure that the WebView2 runtime is present. Windows 11 includes it. On Windows 10, download it from Microsoft and run the installer. Then restart the computer."
+    }
+   ]
+  },
+  "RB-042": {
+   "good": "To run the checker from the command line, open a terminal in the project folder. Then run `stylebound check docs/guide.md --profile strict-plain`. If the checker finds at least one error, the command exits with code 1.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "1",
+     "text": "To run the checker from the command line, open a terminal in the project folder. Then run `stylebound check docs/guide.md --profile strict-plain`. If the checker finds at least one error, the command exits with code."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "To run the checker from the command line, open a terminal in the project folder. Then run `stylebound check docs/guide.md --profile strict-plain`. the checker finds at least one error, the command exits with code 1."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`stylebound check docs/guide.md --profile strict-plain`",
+     "text": "To run the checker from the command line, open a terminal in the project folder. Then run. If the checker finds at least one error, the command exits with code 1."
+    }
+   ]
+  },
+  "RB-043": {
+   "good": "The export file `guide.style-review.json` contains the SHA-256 hash of the original document. If the hash does not match the file on disk, the verifier does not run, unless you pass `--force`.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "256",
+     "text": "The export file `guide.style-review.json` contains the SHA- hash of the original document. If the hash does not match the file on disk, the verifier does not run, unless you pass `--force`."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "The export file `guide.style-review.json` contains the SHA-256 hash of the original document. If the hash does match the file on disk, the verifier does run, unless you pass `--force`."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "The export file `guide.style-review.json` contains the SHA-256 hash of the original document. the hash does not match the file on disk, the verifier does not run, unless you pass `--force`."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`--force`",
+     "text": "The export file `guide.style-review.json` contains the SHA-256 hash of the original document. If the hash does not match the file on disk, the verifier does not run, unless you pass."
+    }
+   ]
+  },
+  "RB-044": {
+   "good": "A paragraph is a procedure if it is a numbered list item or if its first word is an imperative verb. All other paragraphs are descriptions. The sentence limit is 20 words for procedures and 25 words for descriptions.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "20",
+     "text": "A paragraph is a procedure if it is a numbered list item or if its first word is an imperative verb. All other paragraphs are descriptions. The sentence limit is words for procedures and 25 words for descriptions."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "A paragraph is a procedure it is a numbered list item or its first word is an imperative verb. All other paragraphs are descriptions. The sentence limit is 20 words for procedures and 25 words for descriptions."
+    }
+   ]
+  },
+  "RB-045": {
+   "good": "Code spans, file paths, URLs, numbers with units and hyphenated words each count as one word. Text inside parentheses counts as one word in the sentence around it.",
+   "bad": []
+  },
+  "RB-046": {
+   "good": "The review file is older than the document. Export again before you verify. To compare against the current file, select Verify anyway.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": "The review file is older than the document. Export again you verify. To compare against the current file, select Verify anyway."
+    }
+   ]
+  },
+  "RB-047": {
+   "good": "The verifier never changes your document. It writes `guide.style-verify.md` next to it and shows a diff for each paragraph that changed. You accept or reject each paragraph. A rejected paragraph keeps the original text.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "never",
+     "text": "The verifier changes your document. It writes `guide.style-verify.md` next to it and shows a diff for each paragraph that changed. You accept or reject each paragraph. A rejected paragraph keeps the original text."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`guide.style-verify.md`",
+     "text": "The verifier never changes your document. It writes next to it and shows a diff for each paragraph that changed. You accept or reject each paragraph. A rejected paragraph keeps the original text."
+    }
+   ]
+  },
+  "RB-048": {
+   "good": "Stylebound 0.3.0, released October 28, 2026. New: DOCX import. Changed: the strict-plain profile flags contractions. Fixed: the checker counted headings longer than 60 characters twice.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "0.3.0",
+     "text": "Stylebound, released October 28, 2026. New: DOCX import. Changed: the strict-plain profile flags contractions. Fixed: the checker counted headings longer than 60 characters twice."
+    }
+   ]
+  },
+  "RB-049": {
+   "good": "Warning: Do not delete the `.stylebound` folder while a verification runs. The verifier stores its paragraph map there. If you delete it during a run, you lose the accept and reject choices that you made.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "Warning: Do delete the `.stylebound` folder while a verification runs. The verifier stores its paragraph map there. If you delete it during a run, you lose the accept and reject choices that you made."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "while",
+     "text": "Warning: Do not delete the `.stylebound` folder a verification runs. The verifier stores its paragraph map there. If you delete it during a run, you lose the accept and reject choices that you made."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`.stylebound`",
+     "text": "Warning: Do not delete the folder while a verification runs. The verifier stores its paragraph map there. If you delete it during a run, you lose the accept and reject choices that you made."
+    }
+   ]
+  },
+  "RB-050": {
+   "good": "The portable executable does not write to the registry. It keeps all settings in `settings.json` next to the executable. If that file is read-only, the app starts with defaults and shows a warning.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "The portable executable does write to the registry. It keeps all settings in `settings.json` next to the executable. If that file is read-only, the app starts with defaults and shows a warning."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "The portable executable does not write to the registry. It keeps all settings in `settings.json` next to the executable. that file is read-only, the app starts with defaults and shows a warning."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`settings.json`",
+     "text": "The portable executable does not write to the registry. It keeps all settings in next to the executable. If that file is read-only, the app starts with defaults and shows a warning."
+    }
+   ]
+  },
+  "RB-051": {
+   "good": "If the self-test fails, do not build the release. Run `node check.js --list` to see which example failed. Fix the rule, and run the self-test again until it passes.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "If the self-test fails, do build the release. Run `node check.js --list` to see which example failed. Fix the rule, and run the self-test again until it passes."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": " the self-test fails, do not build the release. Run `node check.js --list` to see which example failed. Fix the rule, and run the self-test again until it passes."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`node check.js --list`",
+     "text": "If the self-test fails, do not build the release. Run to see which example failed. Fix the rule, and run the self-test again until it passes."
+    }
+   ]
+  },
+  "RB-052": {
+   "good": "Each rule has at least one flag example and one pass example. The build rejects a rule file that is missing either. A rule can also list exceptions: phrases in which the rule never fires.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "never",
+     "text": "Each rule has at least one flag example and one pass example. The build rejects a rule file that is missing either. A rule can also list exceptions: phrases in which the rule fires."
+    }
+   ]
+  },
+  "RB-053": {
+   "good": "The checker processes about 10,000 words in under 500 milliseconds on a 2024 laptop. It checks documents above 200,000 words in chunks, so the editor stays responsive.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "10,000",
+     "text": "The checker processes about words in under 500 milliseconds on a 2024 laptop. It checks documents above 200,000 words in chunks, so the editor stays responsive."
+    }
+   ]
+  },
+  "RB-054": {
+   "good": "No glossary found. Add terms in Settings > Glossary, or import a CSV file with the columns term, preferred and part of speech.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "no",
+     "text": " glossary found. Add terms in Settings > Glossary, or import a CSV file with the columns term, preferred and part of speech."
+    }
+   ]
+  },
+  "RB-055": {
+   "good": "The `--profile` option accepts `base` or `strict-plain`. When you omit it, the checker reads the profile from `stylebound.config.json`. If no config file exists, it uses `base`.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "no",
+     "text": "The `--profile` option accepts `base` or `strict-plain`. When you omit it, the checker reads the profile from `stylebound.config.json`. If config file exists, it uses `base`."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "The `--profile` option accepts `base` or `strict-plain`. When you omit it, the checker reads the profile from `stylebound.config.json`. no config file exists, it uses `base`."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`--profile`",
+     "text": "The option accepts `base` or `strict-plain`. When you omit it, the checker reads the profile from `stylebound.config.json`. If no config file exists, it uses `base`."
+    }
+   ]
+  },
+  "RB-056": {
+   "good": "The tool extracts must-keep items before the agent edits the file, and compares them after. An item counts as missing when its normalized form does not appear in the edited paragraph or in any paragraph that the aligner mapped to it.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "must",
+     "text": "The tool extracts may-keep items before the agent edits the file, and compares them after. An item counts as missing when its normalized form does not appear in the edited paragraph or in any paragraph that the aligner mapped to it."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "The tool extracts must-keep items before the agent edits the file, and compares them after. An item counts as missing when its normalized form does appear in the edited paragraph or in any paragraph that the aligner mapped to it."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "after",
+     "text": "The tool extracts must-keep items before the agent edits the file, and compares them. An item counts as missing when its normalized form does not appear in the edited paragraph or in any paragraph that the aligner mapped to it."
+    }
+   ]
+  },
+  "RB-057": {
+   "good": "Open the exported Markdown file in your agent. Ask it to apply only the listed findings, and save the result over the original file. Then go back to Stylebound and select Verify.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "only",
+     "text": "Open the exported Markdown file in your agent. Ask it to apply the listed findings, and save the result over the original file. Then go back to Stylebound and select Verify."
+    }
+   ]
+  },
+  "RB-058": {
+   "good": "The app sends nothing over the network. The only outbound request is the optional rule-update check. You turn it on in Settings, and it downloads a signed manifest from GitHub Releases.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "only",
+     "text": "The app sends nothing over the network. The outbound request is the optional rule-update check. You turn it on in Settings, and it downloads a signed manifest from GitHub Releases."
+    }
+   ]
+  },
+  "RB-059": {
+   "good": "A finding has a paragraph id, a line, a column, a character range, a rule id, a severity, a message and a suggested fix. When the rule has no exact replacement, the suggested fix is empty.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "no",
+     "text": "A finding has a paragraph id, a line, a column, a character range, a rule id, a severity, a message and a suggested fix. When the rule has exact replacement, the suggested fix is empty."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": "A finding has a paragraph id, a line, a column, a character range, a rule id, a severity, a message and a suggested fix. the rule has no exact replacement, the suggested fix is empty."
+    }
+   ]
+  },
+  "RB-060": {
+   "good": "Verification found 2 missing items in 1 paragraph. Before you accept, review the diff.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "2",
+     "text": "Verification found missing items in 1 paragraph. Before you accept, review the diff."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": "Verification found 2 missing items in 1 paragraph. you accept, review the diff."
+    }
+   ]
+  },
+  "RB-061": {
+   "good": "The MCP server has three tools: check_text, export_review and verify_edit. It runs over standard input and output and needs no network access.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "no",
+     "text": "The MCP server has three tools: check_text, export_review and verify_edit. It runs over standard input and output and needs network access."
+    }
+   ]
+  },
+  "RB-062": {
+   "good": "After you accept all paragraphs, save the document. The app then computes the hash again and marks the review file as applied. You cannot verify the same review file twice.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "cannot",
+     "text": "After you accept all paragraphs, save the document. The app then computes the hash again and marks the review file as applied. You might not verify the same review file twice."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "cannot",
+     "text": "After you accept all paragraphs, save the document. The app then computes the hash again and marks the review file as applied. You can verify the same review file twice."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "after",
+     "text": " you accept all paragraphs, save the document. The app then computes the hash again and marks the review file as applied. You cannot verify the same review file twice."
+    }
+   ]
+  },
+  "RB-063": {
+   "good": "The checker flags noun clusters of more than three words, unless the cluster is a product name in the glossary. The check is a heuristic, so it reports a suggestion, not an error.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "The checker flags noun clusters of more than three words, unless the cluster is a product name in the glossary. The check is a heuristic, so it reports a suggestion, an error."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "unless",
+     "text": "The checker flags noun clusters of more than three words, the cluster is a product name in the glossary. The check is a heuristic, so it reports a suggestion, not an error."
+    }
+   ]
+  },
+  "RB-064": {
+   "good": "Passive voice is allowed in a description when the actor is unknown. In a procedure, the checker always flags it.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": "Passive voice is allowed in a description the actor is unknown. In a procedure, the checker always flags it."
+    }
+   ]
+  },
+  "RB-065": {
+   "good": "Deprecated: the `--rules` flag. It still works in 0.3, and we will remove it in 0.4. Use `--profile` instead.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "0.3",
+     "text": "Deprecated: the `--rules` flag. It still works in, and we will remove it in 0.4. Use `--profile` instead."
+    },
+    {
+     "kind": "weaken-modal",
+     "item": "will",
+     "text": "Deprecated: the `--rules` flag. It still works in 0.3, and we may remove it in 0.4. Use `--profile` instead."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`--profile`",
+     "text": "Deprecated: the `--rules` flag. It still works in 0.3, and we will remove it in 0.4. Use instead."
+    }
+   ]
+  },
+  "RB-066": {
+   "good": "The regression set holds at least 50 paragraphs. If any fact on any checklist is lost after the simulated edit, the release is blocked.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "50",
+     "text": "The regression set holds at least paragraphs. If any fact on any checklist is lost after the simulated edit, the release is blocked."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "after",
+     "text": "The regression set holds at least 50 paragraphs. If any fact on any checklist is lost the simulated edit, the release is blocked."
+    }
+   ]
+  },
+  "RB-067": {
+   "good": "The quick start has three parts: install the binary, create a config file and run your first sync. The whole process takes less than five minutes.",
+   "bad": []
+  },
+  "RB-068": {
+   "good": "When a sync run starts, the tool scans the local file tree. It compares the size, modification time and SHA-256 hash of each file against the manifest that it stored after the previous run. It queues for upload any file whose hash changed. Files that were deleted locally are removed from the bucket only if you pass `--delete`. The tool detects a conflict when the same file changed on both sides since the last run. By default, the tool asks you which version to keep. In unattended mode, the `conflict_policy` key decides.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "256",
+     "text": "When a sync run starts, the tool scans the local file tree. It compares the size, modification time and SHA- hash of each file against the manifest that it stored after the previous run. It queues for upload any file whose hash changed. Files that were deleted locally are removed from the bucket only if you pass `--delete`. The tool detects a conflict when the same file changed on both sides since the last run. By default, the tool asks you which version to keep. In unattended mode, the `conflict_policy` key decides."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "only",
+     "text": "When a sync run starts, the tool scans the local file tree. It compares the size, modification time and SHA-256 hash of each file against the manifest that it stored after the previous run. It queues for upload any file whose hash changed. Files that were deleted locally are removed from the bucket if you pass `--delete`. The tool detects a conflict when the same file changed on both sides since the last run. By default, the tool asks you which version to keep. In unattended mode, the `conflict_policy` key decides."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "after",
+     "text": "When a sync run starts, the tool scans the local file tree. It compares the size, modification time and SHA-256 hash of each file against the manifest that it stored the previous run. It queues for upload any file whose hash changed. Files that were deleted locally are removed from the bucket only if you pass `--delete`. The tool detects a conflict when the same file changed on both sides since the last run. By default, the tool asks you which version to keep. In unattended mode, the `conflict_policy` key decides."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`--delete`",
+     "text": "When a sync run starts, the tool scans the local file tree. It compares the size, modification time and SHA-256 hash of each file against the manifest that it stored after the previous run. It queues for upload any file whose hash changed. Files that were deleted locally are removed from the bucket only if you pass. The tool detects a conflict when the same file changed on both sides since the last run. By default, the tool asks you which version to keep. In unattended mode, the `conflict_policy` key decides."
+    }
+   ]
+  },
+  "RB-069": {
+   "good": "3. Open a terminal. To check that the install was successful, type `demosync --version`. The output is `demosync 3.0.0`.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "3",
+     "text": ". Open a terminal. To check that the install was successful, type `demosync --version`. The output is `demosync.0.0`."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`demosync --version`",
+     "text": "3. Open a terminal. To check that the install was successful, type. The output is `demosync 3.0.0`."
+    }
+   ]
+  },
+  "RB-070": {
+   "good": "1. Back up the `.demosync` folder in every synced directory. Do this before anything else.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": "1. Back up the `.demosync` folder in every synced directory. Do this anything else."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`.demosync`",
+     "text": "1. Back up the folder in every synced directory. Do this before anything else."
+    }
+   ]
+  },
+  "RB-071": {
+   "good": "3. Install the new version over the old one. Do not uninstall 2.x first, because uninstalling deletes the stored access keys.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "2",
+     "text": "3. Install the new version over the old one. Do not uninstall.x first, because uninstalling deletes the stored access keys."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "3. Install the new version over the old one. Do uninstall 2.x first, because uninstalling deletes the stored access keys."
+    }
+   ]
+  },
+  "RB-072": {
+   "good": "Fixed a security issue where access keys could be written to the debug log when `log_level` was set to `trace`. All users on 3.1.0 or 3.1.1 must upgrade immediately and rotate their access keys.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "3.1.0",
+     "text": "Fixed a security issue where access keys could be written to the debug log when `log_level` was set to `trace`. All users on or 3.1.1 must upgrade immediately and rotate their access keys."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": "Fixed a security issue where access keys could be written to the debug log `log_level` was set to `trace`. All users on 3.1.0 or 3.1.1 must upgrade immediately and rotate their access keys."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`log_level`",
+     "text": "Fixed a security issue where access keys could be written to the debug log when was set to `trace`. All users on 3.1.0 or 3.1.1 must upgrade immediately and rotate their access keys."
+    }
+   ]
+  },
+  "RB-073": {
+   "good": "Each token is limited to 600 requests per minute. When the limit is exceeded, the server returns 429 Too Many Requests with a `Retry-After` header. The header contains the number of seconds that the client must wait before it retries the request. The server can block clients that ignore this header and keep retrying immediately for up to 15 minutes.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "600",
+     "text": "Each token is limited to requests per minute. When the limit is exceeded, the server returns 429 Too Many Requests with a `Retry-After` header. The header contains the number of seconds that the client must wait before it retries the request. The server can block clients that ignore this header and keep retrying immediately for up to 15 minutes."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": "Each token is limited to 600 requests per minute. When the limit is exceeded, the server returns 429 Too Many Requests with a `Retry-After` header. The header contains the number of seconds that the client must wait it retries the request. The server can block clients that ignore this header and keep retrying immediately for up to 15 minutes."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`Retry-After`",
+     "text": "Each token is limited to 600 requests per minute. When the limit is exceeded, the server returns 429 Too Many Requests with a header. The header contains the number of seconds that the client must wait before it retries the request. The server can block clients that ignore this header and keep retrying immediately for up to 15 minutes."
+    }
+   ]
+  },
+  "RB-074": {
+   "good": "Webhook notification delivery retry backoff configuration is set per endpoint. The server sends a POST request with a JSON body for every job state change. Your endpoint must respond with a 2xx status within 10 seconds. Otherwise, the delivery fails, and the server retries it up to 6 times with exponential backoff, starting at 30 seconds. After the 6th failed attempt, the server disables the webhook and sends an email to the admins.",
+   "bad": [
+    {
+     "kind": "drop-number",
+     "item": "10 seconds",
+     "text": "Webhook notification delivery retry backoff configuration is set per endpoint. The server sends a POST request with a JSON body for every job state change. Your endpoint must respond with a 2xx status within. Otherwise, the delivery fails, and the server retries it up to 6 times with exponential backoff, starting at 30 seconds. After the 6th failed attempt, the server disables the webhook and sends an email to the admins."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "after",
+     "text": "Webhook notification delivery retry backoff configuration is set per endpoint. The server sends a POST request with a JSON body for every job state change. Your endpoint must respond with a 2xx status within 10 seconds. Otherwise, the delivery fails, and the server retries it up to 6 times with exponential backoff, starting at 30 seconds. the 6th failed attempt, the server disables the webhook and sends an email to the admins."
+    }
+   ]
+  },
+  "RB-075": {
+   "good": "The server signs each delivery with HMAC-SHA256, using the webhook secret. Always verify the `X-DemoSync-Signature` header before you trust the payload.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "before",
+     "text": "The server signs each delivery with HMAC-SHA256, using the webhook secret. Always verify the `X-DemoSync-Signature` header you trust the payload."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`X-DemoSync-Signature`",
+     "text": "The server signs each delivery with HMAC-SHA256, using the webhook secret. Always verify the header before you trust the payload."
+    }
+   ]
+  },
+  "RB-076": {
+   "good": "Hashing is CPU-intensive. Demo Sync uses at most two CPU cores by default. But on machines with slow disks, the hashing threads can wait on I/O, which looks like high CPU usage in some task managers. You can lower the limit with `hash_threads = 1`, but scans will be slower.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "can",
+     "text": "Hashing is CPU-intensive. Demo Sync uses at most two CPU cores by default. But on machines with slow disks, the hashing threads might wait on I/O, which looks like high CPU usage in some task managers. You might lower the limit with `hash_threads = 1`, but scans will be slower."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`hash_threads = 1`",
+     "text": "Hashing is CPU-intensive. Demo Sync uses at most two CPU cores by default. But on machines with slow disks, the hashing threads can wait on I/O, which looks like high CPU usage in some task managers. You can lower the limit with, but scans will be slower."
+    }
+   ]
+  },
+  "RB-077": {
+   "good": "**`dlg.delete_job.title`**: Delete this job?",
+   "bad": [
+    {
+     "kind": "drop-code",
+     "item": "`dlg.delete_job.title`",
+     "text": "****: Delete this job?"
+    }
+   ]
+  },
+  "RB-078": {
+   "good": "**`dlg.delete_job.body`**: You are about to delete this job. This permanently deletes the job and its history from this computer. The files in your folder and in the bucket will not be deleted. Select OK to continue or Cancel to go back.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "will",
+     "text": "**`dlg.delete_job.body`**: You are about to delete this job. This permanently deletes the job and its history from this computer. The files in your folder and in the bucket may not be deleted. Select OK to continue or Cancel to go back."
+    },
+    {
+     "kind": "delete-negation",
+     "item": "won't",
+     "text": "**`dlg.delete_job.body`**: You are about to delete this job. This permanently deletes the job and its history from this computer. The files in your folder and in the bucket will be deleted. Select OK to continue or Cancel to go back."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`dlg.delete_job.body`",
+     "text": "****: You are about to delete this job. This permanently deletes the job and its history from this computer. The files in your folder and in the bucket will not be deleted. Select OK to continue or Cancel to go back."
+    }
+   ]
+  },
+  "RB-079": {
+   "good": "**`dlg.conflict.body`**: The file {filename} changed both on this computer and in the bucket since the last sync. Choose which version you want to keep. If you do nothing, both versions will be kept and the bucket version will be renamed to {filename}.remote.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "will",
+     "text": "**`dlg.conflict.body`**: The file {filename} changed both on this computer and in the bucket since the last sync. Choose which version you want to keep. If you do nothing, both versions may be kept and the bucket version may be renamed to {filename}.remote."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "if",
+     "text": "**`dlg.conflict.body`**: The file {filename} changed both on this computer and in the bucket since the last sync. Choose which version you want to keep. you do nothing, both versions will be kept and the bucket version will be renamed to {filename}.remote."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`dlg.conflict.body`",
+     "text": "****: The file {filename} changed both on this computer and in the bucket since the last sync. Choose which version you want to keep. If you do nothing, both versions will be kept and the bucket version will be renamed to {filename}.remote."
+    }
+   ]
+  },
+  "RB-080": {
+   "good": "**`dlg.quota.body`**: Your bucket is almost full ({used} of {quota} used). Syncing will stop when the quota is reached. To continue syncing, free up space or ask your administrator to increase the quota.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "will",
+     "text": "**`dlg.quota.body`**: Your bucket is almost full ({used} of {quota} used). Syncing may stop when the quota is reached. To continue syncing, free up space or ask your administrator to increase the quota."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "when",
+     "text": "**`dlg.quota.body`**: Your bucket is almost full ({used} of {quota} used). Syncing will stop the quota is reached. To continue syncing, free up space or ask your administrator to increase the quota."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`dlg.quota.body`",
+     "text": "****: Your bucket is almost full ({used} of {quota} used). Syncing will stop when the quota is reached. To continue syncing, free up space or ask your administrator to increase the quota."
+    }
+   ]
+  },
+  "RB-081": {
+   "good": "**`notify.sync_done`**: Sync complete. {count} files were uploaded and {deleted} files were deleted.",
+   "bad": [
+    {
+     "kind": "drop-code",
+     "item": "`notify.sync_done`",
+     "text": "****: Sync complete. {count} files were uploaded and {deleted} files were deleted."
+    }
+   ]
+  },
+  "RB-082": {
+   "good": "**`notify.sync_failed`**: Sync failed. Something went wrong while uploading {filename}. We will retry automatically in {minutes} minutes.",
+   "bad": [
+    {
+     "kind": "delete-condition",
+     "item": "while",
+     "text": "**`notify.sync_failed`**: Sync failed. Something went wrong uploading {filename}. We will retry automatically in {minutes} minutes."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`notify.sync_failed`",
+     "text": "****: Sync failed. Something went wrong while uploading {filename}. We will retry automatically in {minutes} minutes."
+    }
+   ]
+  },
+  "RB-083": {
+   "good": "**`notify.key_expiring`**: Your access key expires in {days} days. After it expires, syncing will stop until a new key is entered.",
+   "bad": [
+    {
+     "kind": "weaken-modal",
+     "item": "will",
+     "text": "**`notify.key_expiring`**: Your access key expires in {days} days. After it expires, syncing may stop until a new key is entered."
+    },
+    {
+     "kind": "delete-condition",
+     "item": "after",
+     "text": "**`notify.key_expiring`**: Your access key expires in {days} days. it expires, syncing will stop until a new key is entered."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`notify.key_expiring`",
+     "text": "****: Your access key expires in {days} days. After it expires, syncing will stop until a new key is entered."
+    }
+   ]
+  },
+  "RB-084": {
+   "good": "**`err.disk_full`**: Not enough disk space. Demo Sync needs at least {required} MB free in the cache folder to continue.",
+   "bad": [
+    {
+     "kind": "delete-negation",
+     "item": "not",
+     "text": "**`err.disk_full`**: enough disk space. Demo Sync needs at least {required} MB free in the cache folder to continue."
+    },
+    {
+     "kind": "drop-code",
+     "item": "`err.disk_full`",
+     "text": "****: Not enough disk space. Demo Sync needs at least {required} MB free in the cache folder to continue."
+    }
+   ]
+  }
+ }
+}

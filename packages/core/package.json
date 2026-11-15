@@ -1,0 +1,14 @@
+{
+  "name": "stylebound-core",
+  "version": "1.0.0-rc.1",
+  "private": true,
+  "description": "Stylebound core library: parser, rules and checker.",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./index.d.mts",
+      "default": "./index.mjs"
+    }
+  },
+  "types": "./index.d.mts"
+}

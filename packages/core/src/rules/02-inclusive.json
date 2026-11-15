@@ -1,0 +1,1095 @@
+[
+  {
+    "id": "he-she",
+    "name": "Never write he/she or s/he",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Inclusive language > Pronouns in generic references",
+      "quote": "Never write he/she or s/he."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:he|she)\\s?/\\s?(?:she|he)\\b",
+      "\\bs/he\\b",
+      "\\b(?:his|her)\\s?/\\s?(?:her|his)\\b",
+      "\\bhim\\s?/\\s?her\\b",
+      "\\bher\\s?/\\s?him\\b"
+    ],
+    "message": "A slashed pronoun pair is hard to read aloud and still leaves people out.",
+    "fix": "Rewrite to \"you\", to a plural, to \"the\" or \"a\", to a role name, or to singular \"they\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The admin decides whether he/she approves the request."
+      ],
+      "pass": [
+        "Admins decide whether they approve the request."
+      ]
+    }
+  },
+  {
+    "id": "generic-gendered-pronoun",
+    "name": "Gendered pronoun for a generic person",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "source": {
+      "section": "Inclusive language > Pronouns in generic references",
+      "quote": "Don't use he, him, his, she, her, or hers for a generic person."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:he|she)\\s+or\\s+(?:she|he)\\b",
+      "\\bhis\\s+or\\s+hers?\\b",
+      "\\bher\\s+or\\s+his\\b",
+      "\\bhim\\s+or\\s+her\\b",
+      "\\b(?:the|a|an|each|every)\\s+(?:user|admin|administrator|reviewer|customer|member|owner|manager|developer|engineer|reader|person|employee|teammate|agent|operator|lead)\\s+(?:[a-z]+\\s+){0,6}?(?:he|she|his|her|him|himself|herself)\\b"
+    ],
+    "message": "A generic person, such as \"the admin\" or \"a reviewer\", gets no gendered pronoun. Gendered pronouns are right only for a named person who uses them and in direct quotations.",
+    "fix": "In order of preference: rewrite to \"you\", rewrite to a plural, use \"the\" or \"a\", name the role, or use singular \"they\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "A reviewer sees his own tasks on the home screen.",
+        "The admin can reset passwords if he or she has the right permissions."
+      ],
+      "pass": [
+        "Reviewers see their own tasks on the home screen."
+      ]
+    }
+  },
+  {
+    "id": "gender-neutral-words",
+    "name": "Gender-neutral words",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Inclusive language > Gender-neutral words",
+      "quote": "chair, moderator | chairman. staff, workforce | manpower. sales representative | salesman. staffed | manned. people, humanity | mankind. artificial, synthetic | man-made."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "chairm[ae]n",
+        "replace": "chair"
+      },
+      {
+        "match": "chairwom[ae]n",
+        "replace": "chair"
+      },
+      {
+        "match": "manpower",
+        "replace": "staff"
+      },
+      {
+        "match": "sales[ -]?m[ae]n",
+        "replace": "sales representative"
+      },
+      {
+        "match": "manned",
+        "replace": "staffed"
+      },
+      {
+        "match": "unmanned",
+        "replace": "unstaffed"
+      },
+      {
+        "match": "mankind",
+        "replace": "people"
+      },
+      {
+        "match": "man-made",
+        "replace": "artificial"
+      }
+    ],
+    "message": "The guide's table gives a gender-neutral word for this one.",
+    "fix": "Use the replacement from the table.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The help desk is manned around the clock."
+      ],
+      "pass": [
+        "The help desk is staffed around the clock."
+      ]
+    }
+  },
+  {
+    "id": "biased-terms",
+    "name": "Terms that carry bias",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Inclusive language > Terms that carry bias",
+      "quote": "primary, replica | master, slave. main (branch) | master (branch). blocklist, allowlist | blacklist, whitelist. legacy, exempt | grandfathered. quick check, confidence check | sanity check. placeholder, sample | dummy. stop responding | hang."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "master\\s*/\\s*slave",
+        "replace": "primary/replica"
+      },
+      {
+        "match": "master and slave",
+        "replace": "primary and replica"
+      },
+      {
+        "match": "master (?:branch|node|server|database|copy|instance)",
+        "replace": "main branch (or primary)"
+      },
+      {
+        "match": "slaves?",
+        "replace": "replica"
+      },
+      {
+        "match": "blacklist(?:s|ed|ing)?",
+        "replace": "blocklist"
+      },
+      {
+        "match": "black-list(?:s|ed|ing)?",
+        "replace": "blocklist"
+      },
+      {
+        "match": "whitelist(?:s|ed|ing)?",
+        "replace": "allowlist"
+      },
+      {
+        "match": "white-list(?:s|ed|ing)?",
+        "replace": "allowlist"
+      },
+      {
+        "match": "grandfathered(?: in)?",
+        "replace": "exempt"
+      },
+      {
+        "match": "grandfather(?:s|ing)? (?:in )?(?:the|an?|existing|current|old)",
+        "replace": "exempt"
+      },
+      {
+        "match": "sanity[ -]check(?:s|ed|ing)?",
+        "replace": "quick check"
+      },
+      {
+        "match": "dummy",
+        "replace": "placeholder"
+      },
+      {
+        "match": "(?:the |an? )(?:app|application|system|service|browser|server|page|process|connector|sync|client|device|computer|machine|ui) (?:may |might |will |can |could )?hangs?",
+        "replace": "stops responding"
+      }
+    ],
+    "message": "The guide replaces this term. A term that's part of a command, a setting, or an API stays as written, so flag that case for the product team instead of editing the prose.",
+    "fix": "Use the replacement from the table.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Add the domain to the whitelist.",
+        "Merge into the master branch.",
+        "Use dummy data in the sample.",
+        "If the app hangs, restart it."
+      ],
+      "pass": [
+        "Add the domain to the allowlist.",
+        "Merge into the main branch.",
+        "Use placeholder data in the sample."
+      ]
+    }
+  },
+  {
+    "id": "combat-metaphors",
+    "name": "Combat and violence metaphors",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Inclusive language > Combat and violence metaphors",
+      "quote": "Don't borrow language from combat when you mean something ordinary. Also avoid strike and troops."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "fight(?:s|ing)? (?:against )?(?:spam|fraud|abuse|errors|bugs|threats|attacks|downtime|latency|churn|phishing|malware)",
+        "replace": "prevent"
+      },
+      {
+        "match": "combat(?:s|ing|ted)? (?:spam|fraud|abuse|errors|bugs|threats|attacks|downtime|latency|churn|phishing|malware)",
+        "replace": "address"
+      },
+      {
+        "match": "eliminat(?:e|es|ed|ing)",
+        "replace": "prevent (or remove)"
+      },
+      {
+        "match": "adversar(?:y|ies)",
+        "replace": "threat actor"
+      },
+      {
+        "match": "blast radius",
+        "replace": "impact"
+      },
+      {
+        "match": "kill chain",
+        "replace": "attack sequence"
+      },
+      {
+        "match": "front-?line",
+        "replace": "customer-facing"
+      },
+      {
+        "match": "nuke(?:s|d)?",
+        "replace": "delete"
+      },
+      {
+        "match": "war room",
+        "replace": "incident room"
+      },
+      {
+        "match": "bulletproof",
+        "replace": "reliable"
+      },
+      {
+        "match": "troops",
+        "replace": "team"
+      }
+    ],
+    "message": "Combat language makes an ordinary action sound violent and translates badly. A technical term such as the `kill` command stays as written.",
+    "fix": "Use the plain word from the guide's table.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "This update eliminates duplicate tasks.",
+        "Limit the blast radius of a bad deploy."
+      ],
+      "pass": [
+        "This update removes duplicate tasks.",
+        "Limit the impact of a bad deploy."
+      ]
+    }
+  },
+  {
+    "id": "disability-language",
+    "name": "Disability terms and metaphors",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Inclusive language > Disability",
+      "quote": "Write uses a wheelchair, not wheelchair-bound. Don't use stricken with or suffering from. Don't use a disability as a metaphor."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "wheelchair-bound",
+        "replace": "uses a wheelchair"
+      },
+      {
+        "match": "stricken with",
+        "replace": "has"
+      },
+      {
+        "match": "suffering from",
+        "replace": "has"
+      },
+      {
+        "match": "suffers from",
+        "replace": "has"
+      },
+      {
+        "match": "the blind",
+        "replace": "people who are blind"
+      },
+      {
+        "match": "the deaf",
+        "replace": "people who are deaf"
+      },
+      {
+        "match": "the disabled",
+        "replace": "people with disabilities"
+      },
+      {
+        "match": "crippl(?:e|es|ed|ing)",
+        "replace": "stop (or slow)"
+      },
+      {
+        "match": "blind to",
+        "replace": "unaware of"
+      },
+      {
+        "match": "deaf to",
+        "replace": "ignores"
+      },
+      {
+        "match": "tone-deaf",
+        "replace": "insensitive"
+      }
+    ],
+    "message": "Focus on people, not conditions, and don't borrow a disability as a metaphor.",
+    "fix": "Use the plain replacement. \"The outage crippled the service\" becomes \"The outage stopped the service.\"",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The outage crippled the service.",
+        "Teams blind to the risk lose data."
+      ],
+      "pass": [
+        "The outage stopped the service.",
+        "Teams unaware of the risk lose data."
+      ]
+    }
+  },
+  {
+    "id": "age-as-skill",
+    "name": "Don't use age as shorthand for skill",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "source": {
+      "section": "Inclusive language > Age",
+      "quote": "\"So easy your grandparents can use it\" becomes \"Easy to set up.\""
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:so\\s+)?(?:easy|simple)\\s+(?:that\\s+)?(?:even\\s+)?(?:your|a|my)\\s+(?:grandparents?|grandma|grandmother|grandfather|grandpa|kids?|child|children|mom|dad|mother|father)\\b"
+    ],
+    "message": "Age is not a measure of skill.",
+    "fix": "Say what makes it easy: \"Easy to set up.\"",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "So easy your grandparents can use it."
+      ],
+      "pass": [
+        "Easy to set up."
+      ]
+    }
+  },
+  {
+    "id": "cultural-appropriation",
+    "name": "Avoid cultural appropriation",
+    "severity": "warning",
+    "type": "term-ban",
+    "source": {
+      "section": "Inclusive language > Examples and scenarios",
+      "quote": "Avoid slang and anything that could read as cultural appropriation, such as spirit animal or tribe for a team."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "spirit animal"
+      },
+      {
+        "match": "tribes?"
+      },
+      {
+        "match": "tribal"
+      },
+      {
+        "match": "pow-?wow"
+      }
+    ],
+    "message": "These words borrow from cultures that aren't the reader's or the writer's.",
+    "fix": "Write \"team\", \"group\", or \"meeting\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Find your tribe in the community forum."
+      ],
+      "pass": [
+        "Find your team in the community forum."
+      ]
+    }
+  },
+  {
+    "id": "idioms",
+    "name": "Avoid idioms and sports metaphors",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Writing for a global audience",
+      "quote": "Avoid idioms and sports metaphors. \"Out of the box\" becomes \"by default.\" \"A ballpark figure\" becomes \"a rough estimate.\""
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "out of the box",
+        "replace": "by default"
+      },
+      {
+        "match": "out-of-the-box",
+        "replace": "default"
+      },
+      {
+        "match": "ballpark(?: figure| estimate| number)?",
+        "replace": "rough estimate"
+      },
+      {
+        "match": "heads[- ]up",
+        "replace": "note"
+      }
+    ],
+    "message": "Idioms don't translate. Only the two the guide names are checked here. Add rows as you find more.",
+    "fix": "Use the plain phrase from the guide.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Sync works out of the box.",
+        "Heads up: your access key expires soon."
+      ],
+      "pass": [
+        "Sync works by default."
+      ]
+    }
+  },
+  {
+    "id": "unusual-contractions",
+    "name": "Avoid unusual contractions",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Sentences > Use contractions",
+      "quote": "Avoid unusual ones (it'd, should've, there're) and contractions of nouns."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "it'd",
+        "replace": "it would"
+      },
+      {
+        "match": "should've",
+        "replace": "should have"
+      },
+      {
+        "match": "could've",
+        "replace": "could have"
+      },
+      {
+        "match": "would've",
+        "replace": "would have"
+      },
+      {
+        "match": "might've",
+        "replace": "might have"
+      },
+      {
+        "match": "must've",
+        "replace": "must have"
+      },
+      {
+        "match": "there're",
+        "replace": "there are"
+      },
+      {
+        "match": "that'll",
+        "replace": "that will"
+      },
+      {
+        "match": "who've",
+        "replace": "who have"
+      },
+      {
+        "match": "y'all",
+        "replace": "you"
+      },
+      {
+        "match": "ain't",
+        "replace": "isn't"
+      }
+    ],
+    "message": "Common contractions sound natural. Unusual ones slow readers down and trip translation tools.",
+    "fix": "Spell it out.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "It'd be faster to filter first.",
+        "There're three options."
+      ],
+      "pass": [
+        "It would be faster to filter first.",
+        "It's faster to filter first."
+      ]
+    }
+  },
+  {
+    "id": "use-contractions",
+    "name": "Use common contractions",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "term-replace",
+    "source": {
+      "section": "Sentences > Use contractions",
+      "quote": "Common contractions such as it's, you're, don't, can't, and isn't make text sound like a person wrote it."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "do not",
+        "replace": "don't"
+      },
+      {
+        "match": "does not",
+        "replace": "doesn't"
+      },
+      {
+        "match": "did not",
+        "replace": "didn't"
+      },
+      {
+        "match": "cannot",
+        "replace": "can't"
+      },
+      {
+        "match": "can not",
+        "replace": "can't"
+      },
+      {
+        "match": "is not",
+        "replace": "isn't"
+      },
+      {
+        "match": "are not",
+        "replace": "aren't"
+      },
+      {
+        "match": "was not",
+        "replace": "wasn't"
+      },
+      {
+        "match": "were not",
+        "replace": "weren't"
+      },
+      {
+        "match": "will not",
+        "replace": "won't"
+      },
+      {
+        "match": "would not",
+        "replace": "wouldn't"
+      },
+      {
+        "match": "should not",
+        "replace": "shouldn't"
+      },
+      {
+        "match": "could not",
+        "replace": "couldn't"
+      },
+      {
+        "match": "has not",
+        "replace": "hasn't"
+      },
+      {
+        "match": "have not",
+        "replace": "haven't"
+      },
+      {
+        "match": "it is",
+        "replace": "it's"
+      },
+      {
+        "match": "you are",
+        "replace": "you're"
+      },
+      {
+        "match": "that is",
+        "replace": "that's"
+      }
+    ],
+    "message": "The guide's voice is a capable colleague, and colleagues use contractions. Legal text keeps its exact wording.",
+    "fix": "Use the contraction unless the text is legal wording or the full form carries emphasis.",
+    "exceptions": [
+      "is not applicable",
+      "that is,",
+      "it is recommended",
+      "that is the"
+    ],
+    "examples": {
+      "flag": [
+        "The report does not include test accounts."
+      ],
+      "pass": [
+        "The report doesn't include test accounts.",
+        "The report excludes test accounts."
+      ]
+    }
+  },
+  {
+    "id": "us-spelling",
+    "name": "US spelling",
+    "severity": "warning",
+    "type": "term-replace",
+    "source": {
+      "section": "Reviewing a draft > Proofreading sweep",
+      "quote": "US spelling (color, organize, center)."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "colour(?:s|ed|ing|ful)?",
+        "replace": "color"
+      },
+      {
+        "match": "organi[s](?:e|es|ed|ing)",
+        "replace": "organize"
+      },
+      {
+        "match": "organisations?",
+        "replace": "organization"
+      },
+      {
+        "match": "centres?",
+        "replace": "center"
+      },
+      {
+        "match": "centred",
+        "replace": "centered"
+      },
+      {
+        "match": "behaviours?",
+        "replace": "behavior"
+      },
+      {
+        "match": "favourites?",
+        "replace": "favorite"
+      },
+      {
+        "match": "customi[s](?:e|es|ed|ing)",
+        "replace": "customize"
+      },
+      {
+        "match": "customisation",
+        "replace": "customization"
+      },
+      {
+        "match": "optimi[s](?:e|es|ed|ing)",
+        "replace": "optimize"
+      },
+      {
+        "match": "recogni[s](?:e|es|ed|ing)",
+        "replace": "recognize"
+      },
+      {
+        "match": "initiali[s](?:e|es|ed|ing)",
+        "replace": "initialize"
+      },
+      {
+        "match": "synchroni[s](?:e|es|ed|ing)",
+        "replace": "synchronize"
+      },
+      {
+        "match": "authori[s](?:e|es|ed|ing)",
+        "replace": "authorize"
+      },
+      {
+        "match": "authorisation",
+        "replace": "authorization"
+      },
+      {
+        "match": "analys(?:e|es|ed|ing)",
+        "replace": "analyze"
+      },
+      {
+        "match": "catalogues?",
+        "replace": "catalog"
+      },
+      {
+        "match": "licen[c]e",
+        "replace": "license"
+      },
+      {
+        "match": "cancelled",
+        "replace": "canceled"
+      },
+      {
+        "match": "cancelling",
+        "replace": "canceling"
+      },
+      {
+        "match": "labelled",
+        "replace": "labeled"
+      },
+      {
+        "match": "modelled",
+        "replace": "modeled"
+      },
+      {
+        "match": "travelling",
+        "replace": "traveling"
+      },
+      {
+        "match": "defence",
+        "replace": "defense"
+      },
+      {
+        "match": "grey",
+        "replace": "gray"
+      }
+    ],
+    "message": "The guide uses US English spelling. If your team writes another variety, change this rule in your fork.",
+    "fix": "Use the US spelling.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Choose a colour for the label.",
+        "The sync was cancelled."
+      ],
+      "pass": [
+        "Choose a color for the label.",
+        "The sync was canceled."
+      ]
+    }
+  },
+  {
+    "id": "its-contraction",
+    "name": "Its is possessive, it's means it is",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Grammar checks > Plurals and possessives",
+      "quote": "Its is possessive. It's means it is or it has."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\bit's\\s+own\\b",
+      "\\bits\\s+(?:a|an|the|not|been|also|only|time|because|possible|important|easy|hard|best|better|worth|likely|still|now|too|very)\\b"
+    ],
+    "message": "This is the one homophone pair a pattern can catch safely. \"It's own\" needs no apostrophe, and \"its a\" needs one.",
+    "fix": "Use \"its\" for possession and \"it's\" for \"it is\" or \"it has\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "The team has it's own workspace.",
+        "Its a scheduled period when updates can run."
+      ],
+      "pass": [
+        "The team has its own workspace.",
+        "It's a scheduled period when updates can run."
+      ]
+    }
+  },
+  {
+    "id": "one-or-more-s",
+    "name": "Don't write (s) for one or more",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Grammar checks > Plurals and possessives",
+      "quote": "Don't write (s) to mean one or more. \"Select the file(s)\" becomes \"Select one or more files.\""
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "[a-z](\\((?:s|es)\\))"
+    ],
+    "message": "\"(s)\" asks the reader to parse two sentences at once and breaks screen readers.",
+    "fix": "Write \"one or more files\", or use the plural.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Select the file(s) to upload."
+      ],
+      "pass": [
+        "Select one or more files to upload."
+      ]
+    }
+  },
+  {
+    "id": "acronym-apostrophe",
+    "name": "No apostrophe in acronym plurals or possessives",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Terminology > Acronyms and abbreviations",
+      "quote": "Add a lowercase s to make an acronym plural, with no apostrophe: APIs, URLs. Don't make an acronym possessive. \"The API's limits\" becomes \"the API limits\"."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b[A-Z]{2,6}['’]s\\b",
+      "\\b(?:19|20)\\d0['’]s\\b"
+    ],
+    "message": "An apostrophe makes an acronym plural look possessive, and the guide bans the possessive too. Decades take no apostrophe either.",
+    "fix": "Write \"APIs\", \"the API limits\", or \"the 2020s\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Both API's return JSON.",
+        "Check the API's limits.",
+        "Designs from the 2010's."
+      ],
+      "pass": [
+        "Both APIs return JSON.",
+        "Check the API limits.",
+        "Designs from the 2010s."
+      ]
+    }
+  },
+  {
+    "id": "firstly",
+    "name": "Don't write firstly",
+    "severity": "error",
+    "type": "term-replace",
+    "source": {
+      "section": "Numbers > Other numbers",
+      "quote": "Ordinals. Spell out first through ninth. Don't write firstly."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "firstly",
+        "replace": "first"
+      },
+      {
+        "match": "secondly",
+        "replace": "second"
+      },
+      {
+        "match": "thirdly",
+        "replace": "third"
+      },
+      {
+        "match": "lastly",
+        "replace": "last"
+      }
+    ],
+    "message": "\"First\" already works as an adverb.",
+    "fix": "Write \"first\", \"second\", \"third\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Firstly, open the project."
+      ],
+      "pass": [
+        "First, open the project."
+      ]
+    }
+  },
+  {
+    "id": "please-sorry-oops",
+    "name": "No please, sorry, oops, or unfortunately",
+    "severity": "error",
+    "type": "term-ban",
+    "source": {
+      "section": "UI text > Error messages",
+      "quote": "No please, sorry, oops, or unfortunately."
+    },
+    "caseSensitive": false,
+    "terms": [
+      {
+        "match": "please"
+      },
+      {
+        "match": "sorry"
+      },
+      {
+        "match": "oops"
+      },
+      {
+        "match": "whoops"
+      },
+      {
+        "match": "unfortunately"
+      },
+      {
+        "match": "apologies"
+      },
+      {
+        "match": "we apologi[sz]e"
+      }
+    ],
+    "message": "Politeness words add length and, in an error, sound like blame or panic. Say what happened and what to do.",
+    "fix": "Delete the word and lead with the action.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Oops! We couldn't save your file.",
+        "Please select a smaller file."
+      ],
+      "pass": [
+        "The file didn't save because the disk is full. Free up space and try again."
+      ]
+    }
+  },
+  {
+    "id": "are-you-sure",
+    "name": "Never \"Are you sure?\" or \"Warning!\" as a title",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "UI text > Dialogs and confirmations",
+      "quote": "The title is a question or a statement that names the object: \"Delete this project?\" Never \"Are you sure?\" or \"Warning!\""
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\bare\\s+you\\s+sure\\b",
+      "\\bwarning!"
+    ],
+    "message": "A confirmation names the object and the consequence so the reader knows what they're deciding.",
+    "fix": "Name the action and the object: \"Delete this project? Its tasks move to your default project.\"",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Are you sure? [Yes] [No]"
+      ],
+      "pass": [
+        "Delete this project? Its tasks move to your default project."
+      ]
+    }
+  },
+  {
+    "id": "something-went-wrong",
+    "name": "\"Something went wrong\" is the last resort",
+    "severity": "suggestion",
+    "type": "pattern",
+    "source": {
+      "section": "UI text > Error messages",
+      "quote": "One message per known cause. \"Something went wrong\" is the last resort, not the default."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\bsomething\\s+went\\s+wrong\\b",
+      "\\ban\\s+(?:unexpected|unknown)\\s+error\\s+(?:has\\s+)?occurred\\b",
+      "\\ban\\s+error\\s+(?:has\\s+)?occurred\\b"
+    ],
+    "message": "A generic error gives the reader nothing to act on. If the cause is known, name it and say what to do.",
+    "fix": "Write one message per known cause: what happened, why if the reader can act on it, and what to do next.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "An unexpected error occurred."
+      ],
+      "pass": [
+        "The connector lost its link to the sync API. Check network access to the endpoint."
+      ]
+    }
+  },
+  {
+    "id": "click-here",
+    "name": "Never \"click here\" as link text",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "UI text > Links",
+      "quote": "Link text names the destination or the result. Never \"click here,\" and never \"learn more\" on its own."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:click|tap|press|go)\\s+here\\b",
+      "\\bhere\\s+to\\s+(?:view|see|read|open|download|continue|learn|sign|get|start)\\b"
+    ],
+    "message": "\"Here\" tells the reader nothing about where the link goes, and screen readers list links by their text.",
+    "fix": "Name the destination or the result: \"View the sharing rules.\"",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Click here to view the sharing rules."
+      ],
+      "pass": [
+        "View the sharing rules."
+      ]
+    }
+  },
+  {
+    "id": "learn-more",
+    "name": "\"Learn more\" needs an object",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "UI text > Links",
+      "quote": "never \"learn more\" on its own."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\blearn\\s+more(?!\\s+(?:about|on|in|at|from|how|why|when|regarding))\\b"
+    ],
+    "message": "On its own, \"Learn more\" doesn't say what the reader will learn.",
+    "fix": "Add the subject: \"Learn more about recommendations.\"",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Learn more",
+        "Select Learn more to continue."
+      ],
+      "pass": [
+        "Learn more about recommendations"
+      ]
+    }
+  },
+  {
+    "id": "positional-references",
+    "name": "Don't point with above or below",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Documentation > Links in documentation",
+      "quote": "Don't point with \"above\" or \"below.\" Link to the section by name."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?:see|described|listed|shown|mentioned|discussed|explained|defined|noted|outlined|covered|illustrated)\\s+(?:above|below)\\b",
+      "\\b(?:the|this)\\s+(?:section|table|list|steps?|example|figure|screenshot|image|diagram|procedure|note|code|snippet|paragraph|button|link|field|option)\\s+(?:above|below)\\b",
+      "\\bas\\s+(?:shown|described|noted|mentioned|listed)\\s+(?:above|below|earlier|later)\\b",
+      "\\b(?:the\\s+)?button\\s+on\\s+the\\s+(?:left|right)\\b"
+    ],
+    "message": "Position breaks when the layout changes or a screen reader reads the page in order.",
+    "fix": "Name the section and link to it, or name the control.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Follow the steps described above.",
+        "Select the button on the left."
+      ],
+      "pass": [
+        "Follow the steps in Invite people.",
+        "Select Save."
+      ]
+    }
+  },
+  {
+    "id": "image-of-alt-text",
+    "name": "Alt text doesn't start with \"Image of\"",
+    "severity": "error",
+    "type": "pattern",
+    "scope": [
+      "image-alt"
+    ],
+    "source": {
+      "section": "Documentation > Screenshots and alt text",
+      "quote": "Give every informative image alt text that says what it shows. Don't start with \"Image of.\""
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "^\\s*(?:an?\\s+)?(?:image|picture|photo|photograph|screenshot|screen\\s+shot|graphic|icon|illustration|diagram)\\s+(?:of|showing|that\\s+shows)\\b"
+    ],
+    "message": "A screen reader already announces that this is an image.",
+    "fix": "Describe what the image shows or does: \"The Sharing tab with Invite people selected.\"",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "![Screenshot of the sharing dialog](img/share.png)"
+      ],
+      "pass": [
+        "![The Sharing tab with Invite people selected](img/share.png)"
+      ]
+    }
+  },
+  {
+    "id": "empty-alt-text",
+    "name": "Informative image with no alt text",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "empty-alt",
+    "source": {
+      "section": "Documentation > Screenshots and alt text",
+      "quote": "Give every informative image alt text that says what it shows. A decorative image gets empty alt text."
+    },
+    "message": "This image has no alt text. That's right for a decorative image and wrong for a screenshot or any image that carries information.",
+    "fix": "Add alt text that says what the image shows, or leave it empty if the image is decorative.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "![](img/share.png)"
+      ],
+      "pass": [
+        "![The Sharing tab](img/share.png)"
+      ]
+    }
+  }
+]

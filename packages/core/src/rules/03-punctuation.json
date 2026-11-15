@@ -1,0 +1,652 @@
+[
+  {
+    "id": "em-dash",
+    "name": "No em dashes",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Dashes",
+      "quote": "Em dash (—). Don't use it. Readers now associate the em dash with machine-written text, and every job it does has a clearer replacement."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(—)",
+      "(?:^|[^-])(---?)(?=[^-])"
+    ],
+    "message": "The em dash is the strongest machine-written tell, and every job it does has a clearer replacement. A double hyphen is treated as an em dash in Markdown.",
+    "fix": "For an aside, use a pair of commas or parentheses. To introduce a list, use a colon. To join two statements, use a period and two sentences.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Archived projects — those older than a year — are read-only.",
+        "Archived projects -- the old ones -- are read-only."
+      ],
+      "pass": [
+        "Archived projects, those older than a year, are read-only.",
+        "Sync runs every 15 minutes (or right away, if you select Sync now)."
+      ]
+    }
+  },
+  {
+    "id": "spaced-en-dash",
+    "name": "En dash used as a dash",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Dashes",
+      "quote": "En dash (–). Use it for number and date ranges, with no spaces: 2016–2026. In a UI time range, spaces are fine."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(?:^|[^\\d])(\\s–\\s)(?=[^\\d])"
+    ],
+    "message": "A spaced en dash is doing an em dash's job. The en dash is for ranges only.",
+    "fix": "Replace it the way you would an em dash: commas, parentheses, a colon, or a period.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Archived projects – those older than a year – are read-only."
+      ],
+      "pass": [
+        "The range 2016–2026 is shown.",
+        "The slot is 2:15 PM – 4:45 PM."
+      ]
+    }
+  },
+  {
+    "id": "semicolon",
+    "name": "No semicolons",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Semicolons",
+      "quote": "Don't use them. Readers rarely see semicolons outside formal writing, and a sentence that needs one is usually two sentences or a list."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      ";(?!\\S*;)"
+    ],
+    "message": "A sentence that needs a semicolon is usually two sentences or a list.",
+    "fix": "Split the sentence, or turn the series into a list.",
+    "exceptions": [
+      "&amp;",
+      "&lt;",
+      "&gt;",
+      "&quot;",
+      "&nbsp;"
+    ],
+    "examples": {
+      "flag": [
+        "The sync finished; three files were skipped."
+      ],
+      "pass": [
+        "The sync finished. Three files were skipped."
+      ]
+    }
+  },
+  {
+    "id": "exclamation-point",
+    "name": "No exclamation points",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Exclamation points and question marks",
+      "quote": "Don't use exclamation points in UI or documentation."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(?:^|[^!\\[])(!)(?![\\[(])"
+    ],
+    "message": "An exclamation point reads as shouting in an error and as gushing in a success message.",
+    "fix": "End the sentence with a period.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Your changes have been successfully saved to the system!"
+      ],
+      "pass": [
+        "Changes saved."
+      ]
+    }
+  },
+  {
+    "id": "curly-quotes",
+    "name": "Straight quotation marks",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Quotation marks",
+      "quote": "Use straight quotation marks (\" \"), not curly ones. They render the same in every font, browser, and code editor."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "[“”‘’‚„«»]"
+    ],
+    "message": "Curly quotation marks and apostrophes usually come from a word processor. They don't render the same everywhere, and they break copied values.",
+    "fix": "Replace with the straight character: \" or '.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "No projects match “sales”.",
+        "The team’s workspace is ready."
+      ],
+      "pass": [
+        "Type \"sales\" in the search box.",
+        "The team's workspace is ready."
+      ]
+    }
+  },
+  {
+    "id": "punctuation-outside-quotes",
+    "name": "Periods and commas go inside the closing quotation mark",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Quotation marks",
+      "quote": "Put periods and commas inside the closing quotation mark. Exception: when the quoted text is a literal value, such as a search term or a file name, put the punctuation outside."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "[a-z]{3,}(\"[.,])(?=\\s|$)"
+    ],
+    "message": "US convention puts the period or comma inside the closing quotation mark. A literal value such as a search term or file name is the exception (No projects match \"sales\".), so this check only suggests.",
+    "fix": "Move the period or comma inside the quotation mark, unless the quoted text is a literal value.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "If you see \"Sync paused\", check your connection."
+      ],
+      "pass": [
+        "If you see \"Sync paused,\" check your connection."
+      ]
+    }
+  },
+  {
+    "id": "double-space",
+    "name": "One space after a period",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Periods",
+      "quote": "Use one space after a period."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "[.!?]  +(?=\\S)"
+    ],
+    "message": "Two spaces after a period is a typewriter habit that shows up as uneven gaps.",
+    "fix": "Use one space.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Project saved.  Open it to continue."
+      ],
+      "pass": [
+        "Project saved. Open it to continue."
+      ]
+    },
+    "matchRaw": true
+  },
+  {
+    "id": "ampersand",
+    "name": "Use and, not an ampersand",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Ampersands",
+      "quote": "Use and. Keep an ampersand only when it's part of a name or a UI label."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\s&\\s",
+      "\\b[a-z]+&[a-z]+\\b"
+    ],
+    "message": "An ampersand reads as a symbol, not a word, and translation tools often leave it alone.",
+    "fix": "Write \"and\", unless the ampersand is part of a name or an existing UI label.",
+    "exceptions": [
+      "&amp;",
+      "&lt;",
+      "&gt;",
+      "&quot;",
+      "&nbsp;",
+      "&#"
+    ],
+    "examples": {
+      "flag": [
+        "Projects & tasks sync every hour."
+      ],
+      "pass": [
+        "Projects and tasks sync every hour."
+      ]
+    }
+  },
+  {
+    "id": "slash-for-or",
+    "name": "Don't use a slash for or",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Slashes",
+      "quote": "Don't use a slash in place of or. \"Select a project/task\" becomes \"Select a project or a task.\""
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\band/or\\b",
+      "\\b(?:project|task|file|folder|user|member|team|group|setting|option|report|page|screen|field|column|row|value|item|record|account|role|key|name|list|table|form|field)s?/(?:project|task|file|folder|user|member|team|group|setting|option|report|page|screen|field|column|row|value|item|record|account|role|key|name|list|table|form|field)s?\\b"
+    ],
+    "message": "A slash asks the reader to guess whether you mean \"and\", \"or\", or both. Fixed pairs such as on/off and read/write are fine.",
+    "fix": "Write \"or\" (or \"and\"). \"And/or\" almost always means \"or\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Select a project/task to open.",
+        "Add a member and/or a team."
+      ],
+      "pass": [
+        "Select a project or a task to open.",
+        "Turn the setting on/off."
+      ]
+    }
+  },
+  {
+    "id": "nested-parentheses",
+    "name": "Don't nest parentheses",
+    "severity": "error",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Parentheses",
+      "quote": "Don't nest them."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\([^()\\n]*\\([^()\\n]*\\)[^()\\n]*\\)"
+    ],
+    "message": "Nested parentheses mean the sentence is carrying two asides. One is already one too many.",
+    "fix": "Move one aside into its own sentence, or drop it.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Sync runs every hour (or sooner (if you select Sync now))."
+      ],
+      "pass": [
+        "Sync runs every hour (or sooner, if you select Sync now)."
+      ]
+    }
+  },
+  {
+    "id": "ly-hyphen",
+    "name": "No hyphen after an -ly adverb",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Hyphens",
+      "quote": "Don't hyphenate after an adverb ending in -ly: a newly created project."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b(?!(?:family|early|only|daily|weekly|monthly|yearly|hourly|quarterly|friendly|lovely|likely|ugly|holy|supply|apply|reply|fly|ally|rally|tally|bully|belly|jelly|rely|multiply|july)-)[a-z]{3,}ly-[a-z]{3,}\\b"
+    ],
+    "message": "An adverb ending in -ly already attaches to the next word, so the hyphen is redundant.",
+    "fix": "Remove the hyphen: \"a newly created project\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "A newly-created project is empty."
+      ],
+      "pass": [
+        "A newly created project is empty.",
+        "A family-friendly plan."
+      ]
+    }
+  },
+  {
+    "id": "suspended-compound",
+    "name": "Spell out both parts of a compound",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Hyphens",
+      "quote": "Spell out both parts instead of suspending a compound. Write first-level and second-level headings, not first- and second-level headings."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\b[a-z]+-\\s+(?:and|or)\\s+[a-z]+-[a-z]+\\b",
+      "\\b[a-z]+-,\\s+[a-z]+-,?\\s+(?:and|or)\\s+[a-z]+-[a-z]+\\b"
+    ],
+    "message": "A suspended hyphen asks the reader to reassemble the word.",
+    "fix": "Repeat the second part: \"first-level and second-level headings\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Use first- and second-level headings."
+      ],
+      "pass": [
+        "Use first-level and second-level headings."
+      ]
+    }
+  },
+  {
+    "id": "prefix-hyphen",
+    "name": "Most prefixes take no hyphen",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "source": {
+      "section": "Punctuation > Hyphens",
+      "quote": "Most prefixes take no hyphen: autoscale, preview, rerun, nonzero, multifactor. Hyphenate when the word would be misread without one (re-create, re-sort), or when the next character is a capital letter or a numeral."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\b(?:auto|pre|re|non|multi|sub|co|un|anti|over|under)-(?!(?:create|creating|created|creation|sort|sorting|sorted|sign|signing|signed|cover|covered|covering|press|pressed|lease|leased|form|formed|forming|mark|marked|count|counted|collect|collected|enter|entered|entering|load|loaded|loading|run|ran|running|elect|elected|export|exported|import|imported|index|indexed|order|ordered|up)\\b)[a-z]{3,}\\b"
+    ],
+    "message": "Most prefixes join the word with no hyphen. The hyphen stays only when the word would be misread or the next character is a capital or a numeral.",
+    "fix": "Close the word: \"rerun\", \"nonzero\", \"multifactor\". Use the hyphen only in cases such as \"re-create\" and \"non-English\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Set up multi-factor authentication."
+      ],
+      "pass": [
+        "Set up multifactor authentication.",
+        "Re-create the project.",
+        "A non-English keyboard."
+      ]
+    }
+  },
+  {
+    "id": "heading-period",
+    "name": "No period or ellipsis at the end of a heading",
+    "severity": "error",
+    "type": "pattern",
+    "scope": [
+      "heading"
+    ],
+    "source": {
+      "section": "Documentation > Headings",
+      "quote": "No period at the end. A question mark is fine when the heading asks the reader's question."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(?:\\.|…|\\.\\.\\.)\\s*$"
+    ],
+    "message": "Headings and labels take no end punctuation other than a question mark.",
+    "fix": "Remove the period or ellipsis.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "## Invite people to a project."
+      ],
+      "pass": [
+        "## Invite people to a project",
+        "## What is a service level objective?"
+      ]
+    }
+  },
+  {
+    "id": "heading-colon",
+    "name": "Never end a heading with a colon",
+    "severity": "error",
+    "type": "pattern",
+    "scope": [
+      "heading"
+    ],
+    "source": {
+      "section": "Punctuation > Colons",
+      "quote": "Never end a heading or a UI label with a colon."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      ":\\s*$"
+    ],
+    "message": "A heading introduces the section by itself. The colon adds nothing.",
+    "fix": "Remove the colon.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "## Requirements:"
+      ],
+      "pass": [
+        "## Requirements"
+      ]
+    }
+  },
+  {
+    "id": "heading-title-case",
+    "name": "Headings use sentence case",
+    "severity": "warning",
+    "type": "heading-case",
+    "scope": [
+      "heading"
+    ],
+    "source": {
+      "section": "Capitalization > Sentence case by default",
+      "quote": "Use sentence case for headings, titles, labels, buttons, menu items, tooltips, column headers, and list items. Capitalize the first word and proper nouns."
+    },
+    "caseSensitive": true,
+    "message": "This heading looks like title case: two or more words after the first are capitalized. Proper nouns and acronyms stay capitalized, so check that the capitals are names.",
+    "fix": "Capitalize only the first word, proper nouns, and the first word after a colon.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "## Create A New Project",
+        "## Getting Started With Projects"
+      ],
+      "pass": [
+        "## Create a new project",
+        "## Release notes for version 4.2",
+        "## Connect GitHub and Slack accounts"
+      ]
+    }
+  },
+  {
+    "id": "heading-colon-capital",
+    "name": "Capitalize the first word after a colon in a heading",
+    "severity": "warning",
+    "type": "pattern",
+    "scope": [
+      "heading"
+    ],
+    "source": {
+      "section": "Capitalization > Sentence case by default",
+      "quote": "In a heading or title, also capitalize the first word after a colon. Version 4.2: What changed for admins"
+    },
+    "caseSensitive": true,
+    "patterns": [
+      ":\\s+[a-z]"
+    ],
+    "message": "In a heading, the word after a colon starts a new clause and takes a capital.",
+    "fix": "Capitalize the word after the colon.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "## Version 4.2: what changed for admins"
+      ],
+      "pass": [
+        "## Version 4.2: What changed for admins"
+      ]
+    }
+  },
+  {
+    "id": "heading-ampersand",
+    "name": "No ampersands or plus signs in headings",
+    "severity": "warning",
+    "type": "pattern",
+    "scope": [
+      "heading"
+    ],
+    "source": {
+      "section": "Documentation > Headings",
+      "quote": "Avoid ampersands and plus signs."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "\\s[&+]\\s"
+    ],
+    "message": "Symbols in a heading read as abbreviations and don't translate.",
+    "fix": "Write \"and\".",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "## Projects & tasks",
+        "## Projects + tasks"
+      ],
+      "pass": [
+        "## Projects and tasks"
+      ]
+    }
+  },
+  {
+    "id": "heading-acronym",
+    "name": "Don't introduce an acronym in a heading",
+    "severity": "error",
+    "type": "pattern",
+    "scope": [
+      "heading"
+    ],
+    "source": {
+      "section": "Documentation > Headings",
+      "quote": "Don't introduce an acronym in a heading."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "\\([A-Z]{2,6}\\)"
+    ],
+    "message": "The expansion belongs in the text that follows, where the reader can see it in context.",
+    "fix": "Use either the spelled-out term or the acronym in the heading, and introduce the pair in the first paragraph.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "## Set up single sign-on (SSO)"
+      ],
+      "pass": [
+        "## Set up single sign-on"
+      ]
+    }
+  },
+  {
+    "id": "list-item-end-punctuation",
+    "name": "No semicolons, commas, or conjunctions at the ends of list items",
+    "severity": "error",
+    "type": "pattern",
+    "scope": [
+      "list"
+    ],
+    "source": {
+      "section": "Documentation > Lists",
+      "quote": "No semicolons, commas, or conjunctions at the ends of items."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(?:;|,|\\s(?:and|or|but))\\s*$"
+    ],
+    "message": "A list item stands on its own. Trailing punctuation or conjunctions turn the list back into a sentence.",
+    "fix": "Remove the trailing semicolon, comma, or conjunction.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "- Create a project;\n- Add members, and\n- Set the access rule."
+      ],
+      "pass": [
+        "- Create a project\n- Add members\n- Set the access rule"
+      ]
+    }
+  },
+  {
+    "id": "list-item-lowercase",
+    "name": "Start each list item with a capital letter",
+    "severity": "warning",
+    "type": "pattern",
+    "scope": [
+      "list"
+    ],
+    "source": {
+      "section": "Documentation > Lists",
+      "quote": "Start each item with a capital letter."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "^\\s*[a-z]"
+    ],
+    "message": "List items start with a capital letter, even when they're fragments. A code value or identifier that must stay lowercase is the exception, and it belongs in code style.",
+    "fix": "Capitalize the first word, or put a lowercase identifier in code style.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "- create a project"
+      ],
+      "pass": [
+        "- Create a project",
+        "- `npm` installs the package"
+      ]
+    }
+  },
+  {
+    "id": "capital-after-colon",
+    "name": "Lowercase after a colon in a sentence",
+    "severity": "suggestion",
+    "heuristic": true,
+    "type": "pattern",
+    "scope": [
+      "paragraph",
+      "quote"
+    ],
+    "source": {
+      "section": "Punctuation > Colons",
+      "quote": "After a colon in a sentence, lowercase the next word unless it's a proper noun. In a heading or title, capitalize it."
+    },
+    "caseSensitive": true,
+    "patterns": [
+      "[a-z]:\\s+[A-Z][a-z]+\\b"
+    ],
+    "message": "Inside a sentence, the word after a colon stays lowercase unless it's a proper noun. This check can't tell a name from a common word, so it only suggests.",
+    "fix": "Lowercase the word after the colon unless it's a name.",
+    "exceptions": [
+      "Note:",
+      "Important:",
+      "Warning:",
+      "Tip:",
+      "Optional:",
+      "Example:",
+      "Before:",
+      "After:",
+      "Result:",
+      "Label:",
+      "Placeholder:"
+    ],
+    "examples": {
+      "flag": [
+        "Each task has three dates: Created, due, and closed."
+      ],
+      "pass": [
+        "Each task has three dates: created, due, and closed.",
+        "Optional: In Message, add a note."
+      ]
+    }
+  },
+  {
+    "id": "leading-decimal",
+    "name": "Use a leading zero below one",
+    "severity": "warning",
+    "type": "pattern",
+    "source": {
+      "section": "Numbers > Other numbers",
+      "quote": "Decimals. Use a leading zero below one: 0.5."
+    },
+    "caseSensitive": false,
+    "patterns": [
+      "(?:^|[\\s(])(\\.\\d+)\\b"
+    ],
+    "message": "A bare decimal point is easy to miss.",
+    "fix": "Write the zero: 0.5.",
+    "exceptions": [],
+    "examples": {
+      "flag": [
+        "Set the threshold to .5 seconds."
+      ],
+      "pass": [
+        "Set the threshold to 0.5 seconds."
+      ]
+    }
+  }
+]
