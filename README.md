@@ -2,6 +2,8 @@
 
 Stylebound checks technical writing against a small set of plain-English rules. It exports the findings so that any person or agent can fix them. Then it verifies that no fact was lost. There is no AI inside the tool.
 
+> See the complete style guide here: [QuillPusher's Style Guide](https://github.com/QuillPusher/oss-writing-style-guide)
+
 Status: release candidate 1.0.0-rc.1. It is not yet published to npm; install the release candidate from the GitHub Release (see Install the stylebound command). It was developed and tested on Windows. The checks that still need a run on Linux and macOS are listed in `docs/PLATFORM-TESTS.md`.
 
 ## Quick start
