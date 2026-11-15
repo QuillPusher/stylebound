@@ -4,7 +4,7 @@
 
 Sources:
 
-- 28 paragraphs from a sample guide (`acme-tasks-guide-with-errors.md`). They contain style errors on purpose. The set tests that a style edit keeps every fact, not that the text is clean.
+- 28 paragraphs from `oss-style-checker/sample-error-file/`. They contain style errors on purpose. The set tests that a style edit keeps every fact, not that the text is clean.
 - 12 paragraphs from the OSS Writing Style Guide's own examples.
 - 26 paragraphs written for this set, covering procedures, descriptions, UI strings, error messages, warnings and release notes about Stylebound itself.
 - 18 paragraphs from the generated trial documents (`trial/docs`), listed in `trial.json` (chunk 2.6): every planted "should", every UI string with placeholders, and each paragraph where an agent edit nearly lost a fact or the verifier raised a false alarm. Their fact checklists come from `trial/docs/answer-key.json`. Numbered steps keep their list marker, because a step's first sentence is judged as an instruction.
@@ -22,7 +22,7 @@ How the gate works (`npm run gate`, plan chunk 1.11; edits in `edits.json`):
 
 1. Open `build_regression.py` and add an `add(...)` call in the right section: the source label, the kind (`description`, `procedure`, `ui` or `release-note`), the paragraph text exactly as written, and a fact checklist.
 2. Keep the fact checklist short: two to five facts a reader would be harmed by losing.
-3. Use only your own writing, or text under a license that lets you republish it under MIT. Never text from a third-party specification and nothing from the public STE skill repositories.
+3. Use only your own writing, or text under a license that lets you republish it under MIT. Never ASD-STE100 text and nothing from the public STE skill repositories.
 4. Rebuild: `python -I regression/build_regression.py` (use `python3` on Linux and macOS). The script extracts the must-keep list and writes the hash.
 5. Run `npm run regress`. It must print the new count and `0 failures`.
 6. Update the expected count (84 today) in `tests/regression/load.test.mjs`, `tests/regression/gate.test.mjs` and `tests/core/mustkeep.test.mjs`.

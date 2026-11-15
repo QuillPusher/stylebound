@@ -10,7 +10,7 @@ Nothing in this guide publishes anything or needs an npm account.
 
 - A Linux machine with bash.
 - Node.js 22 or later. npm comes with it.
-- No internet access for the tests. They work offline.
+- Internet access only if you install from npm in section 3. The other tests work offline.
 - Git, for the full test in section 4 only.
 
 Do these steps to check Node.js:
@@ -36,7 +36,8 @@ Do not use `sudo npm install -g`. The tests in this guide install into a tempora
 
 Get the files from the machine that holds the repository, or from its Git host. Choose one of these options:
 
-- Option A, the release folder. This is enough for the quick test.
+- No files, if you install from npm for the quick test in section 3.
+- Option A, the release folder. This is enough for the quick test offline.
 - Option B, the whole repository. You need it for the full test in section 4.
 
 ### Option A: Copy the release folder
@@ -95,11 +96,11 @@ For more information, see [the README](../README.md#on-linux-or-macos-make-the-c
 
 ## 3. Quick test of the package
 
-These steps install the tarball into a temporary folder, offline. Then they run the command on a small sample file. Your usual global npm folder stays unchanged.
+These steps install Stylebound into a temporary folder. Then they run the command on a small sample file. Your usual global npm folder stays unchanged. Install it from npm, or offline from the release folder (Option A).
 
 With Option B, you can skip this section. `npm run test:pack` in section 4 does the same checks.
 
-1. Go to the release folder:
+1. If you install from the release folder, go to it:
 
    ```
    cd ~/stylebound-release
@@ -112,13 +113,19 @@ With Option B, you can skip this section. `npm run test:pack` in section 4 does 
    work=$(mktemp -d)
    ```
 
-3. Install the tarball into the temporary folder:
+3. Install Stylebound into the temporary folder. From npm:
+
+   ```
+   npm install -g stylebound@next --no-audit --no-fund --prefix "$prefix"
+   ```
+
+   Or offline, from the tarball in the release folder:
 
    ```
    npm install -g ./stylebound-1.0.0-rc.1.tgz --offline --no-audit --no-fund --prefix "$prefix"
    ```
 
-   npm puts the command at `$prefix/bin/stylebound` and the package in `$prefix/lib/node_modules/stylebound`.
+   Either way, npm puts the command at `$prefix/bin/stylebound` and the package in `$prefix/lib/node_modules/stylebound`.
 4. Show the version and the help:
 
    ```

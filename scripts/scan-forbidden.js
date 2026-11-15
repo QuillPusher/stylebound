@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /*
  * Fails if content we must never ship appears anywhere in the repository:
- * text from a third-party specification (page furniture, dictionary layout,
+ * text from the ASD-STE100 specification (page furniture, dictionary layout,
  * locally extracted dictionaries), the OpenSTE word list, or files from the
- * public STE skill repositories (such as
+ * two public STE skill repositories (danyuchn/asd-ste100-skill and
  * AminBlg/SimpleEnglish).
  *
  *   node scripts/scan-forbidden.js          scan the repository
@@ -22,21 +22,21 @@ const MAX_BYTES = 20 * 1024 * 1024;
 
 // Checked against the path relative to the scan root, with forward slashes.
 const PATH_RULES = [
-  { id: 'spec-pdf', re: /ste[-_ ]?100[^/]*\.pdf$/i, why: 'a copy of the specification PDF' },
+  { id: 'asd-pdf', re: /ste[-_ ]?100[^/]*\.pdf$/i, why: 'a copy of an ASD-STE100 PDF' },
   { id: 'openste-file', re: /(^|\/)openste\.json$/i, why: 'the OpenSTE word list' },
   { id: 'skill-repo-file', re: /(^|\/)(ste[-_]lint\.py|linter-edge-cases\.md|check_numbers\.py|pressure-tests\.md|reply_scenarios\.json)$/i, why: 'a file from a public STE skill repository' },
-  { id: 'skill-repo-folder', re: /(^|\/)(SimpleEnglish|ste-dictionary)\//i, why: 'a folder from a public STE skill repository' },
+  { id: 'skill-repo-folder', re: /(^|\/)(asd-ste100-skill|SimpleEnglish|ste-dictionary)\//i, why: 'a folder from a public STE skill repository' },
   { id: 'skill-eval-output', re: /__(baseline|skill|judge)__[^/]*$/, why: 'an evaluation output file from a public STE skill repository' }
 ];
 
 // Checked against the content of every text file.
 const TEXT_RULES = [
-  { id: 'spec-page-header', re: /Simplified Technical English[ \t]*\r?\n[ \t]*Issue 9/, why: 'specification page header' },
-  { id: 'spec-page-number', re: /^[ \t]*Page [12]-\d{1,2}-[A-Z]?\d{1,3}[ \t]*$/m, why: 'specification page number line' },
-  { id: 'spec-part-footer', re: /Part [12] - (Dictionary|Writing rules)/i, why: 'specification page footer' },
-  { id: 'spec-dictionary-columns', re: /Approved meaning\s*\/\s*ALTERNATIVES/i, why: 'specification dictionary column heading' },
-  { id: 'spec-copyright-notice', re: /Copyright ASD\b/, why: 'a file marked as specification copyright' },
-  { id: 'spec-extracted-dictionary', re: /"not_approved_count"\s*:/, why: 'a locally extracted specification dictionary' },
+  { id: 'asd-page-header', re: /ASD-STE100 Simplified Technical English[ \t]*\r?\n[ \t]*Issue 9/, why: 'ASD-STE100 page header' },
+  { id: 'asd-page-number', re: /^[ \t]*Page [12]-\d{1,2}-[A-Z]?\d{1,3}[ \t]*$/m, why: 'ASD-STE100 page number line' },
+  { id: 'asd-part-footer', re: /Part [12] - (Dictionary|Writing rules)/i, why: 'ASD-STE100 page footer' },
+  { id: 'asd-dictionary-columns', re: /Approved meaning\s*\/\s*ALTERNATIVES/i, why: 'ASD-STE100 dictionary column heading' },
+  { id: 'asd-copyright-notice', re: /Copyright ASD\b/, why: 'a file marked as ASD copyright' },
+  { id: 'asd-extracted-dictionary', re: /"not_approved_count"\s*:/, why: 'a locally extracted ASD-STE100 dictionary' },
   { id: 'openste-json', re: /"wordstatus"\s*:[\s\S]{0,300}?"spacypos"\s*:/, why: 'OpenSTE word list entries' }
 ];
 

@@ -27,16 +27,16 @@ function rulesFound(files) {
 
 // One planted file per rule. Each must trigger its own rule and no other.
 const TEXT_SAMPLES = {
-  'spec-page-header': 'Simplified Technical English\nIssue 9\n',
-  'spec-page-number': 'some text\nPage 2-1-A3\nmore text\n',
-  'spec-part-footer': 'footer: Part 2 - Dictionary\n',
-  'spec-dictionary-columns': 'Word | Approved meaning/ ALTERNATIVES | Examples\n',
-  'spec-copyright-notice': '{"notice": "Copyright ASD. Personal use only."}\n',
-  'spec-extracted-dictionary': '{"approved_count": 1, "not_approved_count": 2}\n',
+  'asd-page-header': 'ASD-STE100 Simplified Technical English\nIssue 9\n',
+  'asd-page-number': 'some text\nPage 2-1-A3\nmore text\n',
+  'asd-part-footer': 'footer: Part 2 - Dictionary\n',
+  'asd-dictionary-columns': 'Word | Approved meaning/ ALTERNATIVES | Examples\n',
+  'asd-copyright-notice': '{"notice": "Copyright ASD. Personal use only."}\n',
+  'asd-extracted-dictionary': '{"approved_count": 1, "not_approved_count": 2}\n',
   'openste-json': '{"words": [{"title": "a", "wordstatus": "approved", "spacypos": "DET"}]}\n'
 };
 const PATH_SAMPLES = {
-  'spec-pdf': 'spec/STE100_ISSUE9.pdf',
+  'asd-pdf': 'spec/ASD-STE100_ISSUE9.pdf',
   'openste-file': 'vocabulary/openste.json',
   'skill-repo-file': 'scripts/ste-lint.py',
   'skill-repo-folder': 'vendor/SimpleEnglish/notes.txt',
@@ -62,8 +62,8 @@ for (const [id, rel] of Object.entries(PATH_SAMPLES)) {
 
 test('ordinary project text passes', () => {
   const prose = [
-    'Stylebound is based on the principles of plain and controlled technical English, not on a third-party specification.',
-    'Never copy from AminBlg/SimpleEnglish. Reading it is allowed.',
+    'Stylebound is based on the principles of plain and controlled technical English, not on ASD-STE100.',
+    'Never copy from danyuchn/asd-ste100-skill or AminBlg/SimpleEnglish. Reading them is allowed.',
     'See page 2 of the guide. Part 2 of this plan covers the verifier.',
     '{"approved": true, "status": "approved"}'
   ].join('\n');
@@ -73,7 +73,7 @@ test('ordinary project text passes', () => {
 test('node_modules and .git are skipped', () => {
   assert.deepStrictEqual(rulesFound({
     'node_modules/x/openste.json': TEXT_SAMPLES['openste-json'],
-    '.git/objects/notes': TEXT_SAMPLES['spec-copyright-notice']
+    '.git/objects/notes': TEXT_SAMPLES['asd-copyright-notice']
   }), []);
 });
 

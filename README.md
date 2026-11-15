@@ -44,19 +44,25 @@ Stylebound runs on Windows, macOS and Linux. It needs Node.js 22 or later and np
 
 ### Install the stylebound command
 
-Inside the repository, `npx stylebound` works, and so does `node packages/cli/bin/stylebound.mjs`. To use the `stylebound` command in any folder, build the package. Then install it for your user:
+Install the command from npm for your user. You need no repository for this:
+
+```
+npm install -g stylebound@next
+stylebound --version
+```
+
+The last command prints `stylebound 1.0.0-rc.1`. Until version 1.0.0 is published, the package is a release candidate under the `next` tag. To remove the command again, run `npm uninstall -g stylebound`.
+
+On macOS and Linux, do not use `sudo` for a global install. If npm reports a permission error, install Node.js with nvm. Then run the install command again.
+
+To install the command from the repository instead, for example to try your own changes, build the package. Then install the tarball:
 
 ```
 npm run build:npm
 npm install -g ./release/1.0.0-rc.1/stylebound-1.0.0-rc.1.tgz
-stylebound --version
 ```
 
-The last command prints `stylebound 1.0.0-rc.1`. To remove the command again, run `npm uninstall -g stylebound`.
-
-On macOS and Linux, do not use `sudo` for a global install. If npm reports a permission error, install Node.js with nvm. Then run the install command again.
-
-After the package is published to npm, `npm install -g stylebound@next` installs it without the repository.
+Inside the repository, `npx stylebound` works without an install, and so does `node packages/cli/bin/stylebound.mjs`.
 
 ## Try it on a trial document
 

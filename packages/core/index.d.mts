@@ -62,7 +62,7 @@ export interface Rule {
 }
 
 export interface Meta {
-  guide: { title: string; version: string; rulesGenerated: string };
+  guide: { title: string; version: string; sourceFile: string; rulesGenerated: string };
   severityMapping: Record<Severity, string>;
 }
 

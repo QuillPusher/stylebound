@@ -9,7 +9,7 @@ Stylebound checks technical writing against a small set of plain-English rules, 
 3. **Deterministic, no AI inside.** The tool checks, exports and verifies. Any model runs outside it.
 4. **Lossless before pretty.** A rewrite that loses a number, a condition or a "not" is a failure, however good it reads.
 5. **Precision over coverage.** A rule that is often wrong gets every rule ignored. Fewer, surer rules win.
-6. **Ours and open.** Our own code and our own wording, under an open licence. Nothing copied from third-party specifications or from other people's skills.
+6. **Ours and open.** Our own code and our own wording, under an open licence. Nothing copied from ASD-STE100 or from other people's skills.
 
 ## Long-term development guidelines
 

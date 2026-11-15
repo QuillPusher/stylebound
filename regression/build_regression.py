@@ -69,10 +69,10 @@ def add(source, kind, text, facts):
     P.append({"source": source, "kind": kind, "text": text.strip(), "facts": facts})
 
 # ---------------------------------------------------------------------------
-# A. The Acme Tasks sample error file. Paragraphs kept verbatim, with
+# A. oss-style-checker/sample-error-file. Paragraphs kept verbatim, with
 #    their style errors, because the regression set tests fact preservation
 #    through a style edit, not style itself.
-S = "acme-tasks-guide-with-errors.md"
+S = "oss-style-checker/sample-error-file/acme-tasks-guide-with-errors.md"
 add(S, "description", "Acme Tasks keeps your team's projects, tasks, and deadlines in one place.",
     ["Product is Acme Tasks", "Scope: projects, tasks, deadlines", "They are kept in one place"])
 add(S, "procedure", "Create a project in order to group related tasks.",
@@ -132,7 +132,7 @@ add(S, "release-note", "Exports now include archived projects.",
 
 # ---------------------------------------------------------------------------
 # B. OSS Writing Style Guide examples, the 'after' column used as source.
-G = "OSS Writing Style Guide"
+G = "oss-style-checker/oss-writing-style-guide.md"
 add(G, "description", "The dashboard refreshes every 5 minutes, so your team sees the latest numbers.",
     ["Refresh interval 5 minutes", "Benefit: latest numbers"])
 add(G, "description", "You get an email when someone assigns you a task.",

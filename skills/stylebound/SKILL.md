@@ -9,7 +9,7 @@ Stylebound checks a document against plain-English rules, writes a review file, 
 
 ## 1. Find the CLI
 
-Run `stylebound --version`. If that fails, use `npx stylebound` inside the Stylebound repository, or `node <repo>/packages/cli/bin/stylebound.mjs`. Below, `stylebound` means whichever works.
+Run `stylebound --version`. If that fails, ask the person whether to install the command with `npm install -g stylebound@next`, then run `stylebound --version` again. Inside the Stylebound repository, `npx stylebound` and `node <repo>/packages/cli/bin/stylebound.mjs` also work. Below, `stylebound` means whichever works.
 
 ## 2. Export the review
 
